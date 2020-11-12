@@ -1,6 +1,6 @@
 ## Loads Big Craftables data
 
-## TODO: fix loading. many of the datasets have a parsing error.
+## TODO: fix a parsing warning
 
 big_craftables <-
   readr::read_csv(file = "data-raw/files/Big Craftables.csv") %>%
