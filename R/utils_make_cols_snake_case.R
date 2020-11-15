@@ -13,7 +13,7 @@
 #' data.frame("Space  Col" = c(1,2,3),
 #' check.names = FALSE))
 make_cols_snake_case <- function(x_data) {
-  colnames(x_data) <- rstardew::make_snake_case(x_char = colnames(x_data))
+  colnames(x_data) <- make_snake_case(x_char = colnames(x_data))
 
   return(x_data)
 }

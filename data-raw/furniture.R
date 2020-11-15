@@ -2,7 +2,7 @@
 
 furniture <-
   readr::read_csv(file = "data-raw/files/Furniture.csv") %>%
-  rstardew::make_cols_snake_case() %>%
+  make_cols_snake_case() %>%
   tidyr::separate(col = source_rectangle,
                   into = c("source_rectangle_width", "source_rectangle_height"),
                   sep = " ",
