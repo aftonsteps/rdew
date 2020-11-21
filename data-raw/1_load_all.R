@@ -10,6 +10,8 @@ source("data-raw/crops.R")
 source("data-raw/furniture.R")
 source("data-raw/hats.R")
 source("data-raw/weapons.R")
+source("data-raw/crops_object_information.R")
+source("data-raw/seeds_object_information.R")
 
 ## Clean up after ourselves
 rm(list = c("make_snake_case",
