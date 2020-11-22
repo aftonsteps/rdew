@@ -1,4 +1,5 @@
 "ObjectId","Name","Description","Min Damage Output","Max Damage Output","Knockback","Speed","Added Precision","Added Defense","Type","Base Mine Level","Min Mine Level","Added Area Of Effect","Critical Chance","Critical Multiplier"
+"44","Cutlass","A finely crafted blade.","9","17","1","4","0","0","0","-1","-1","0",".02","3"
 "45","Wicked Kris","The blade is made of an iridium alloy.","24","30",".5","0","8","0","1","-1","-1","2",".06","3"
 "46","Kudgel","A brute's companion.","27","40","1.6","-10","0","0","2","107","100","0",".02","3.1"
 "47","Scythe","It can cut grass into hay, if you've built a silo.","1","3","1","0","0","0","0","-1","-1","0",".02","3"

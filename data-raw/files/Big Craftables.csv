@@ -1,4 +1,5 @@
 "ObjectId","Name","Price","Edibility","Type","Category","Description","Can be set outdoors","Can be set indoors","Fragility","English Name"
+"88","Standing Geode","0","-300","Crafting","-9","It's a huge geode mounted on a stand. Hundreds of purple crystals shimmer within.","true","false","0","Standing Geode"
 "89","Obsidian Vase","0","-300","Crafting","-9","A beautifully crafted ornamental vase made from obsidian and gold.","true","false","0","Obsidian Vase"
 "192","Seasonal Plant","50","-300","Crafting","-9","An ornamental plant that changes with each season. It doesn't need to be watered.","true","true","0","Seasonal Plant"
 "196","Seasonal Plant","50","-300","Crafting","-9","An ornamental plant that changes with each season. It doesn't need to be watered.","true","true","0","Seasonal Plant"
