@@ -22,6 +22,10 @@ current form, this package contains data for:
   - Hats
   - Weapons
 
+This package is in its early form, and so should be used with caution.
+Data and methods may change frequently until it reaches a more stable
+form.
+
 Comments and contributions are welcome. Please open an issue or make a
 pull request. 😄
 
