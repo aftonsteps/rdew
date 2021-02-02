@@ -4,7 +4,8 @@
 \name{big_craftables}
 \alias{big_craftables}
 \title{Big Craftables Data}
-\format{A data frame with 147 rows and 11 variables:
+\format{
+A data frame with 147 rows and 11 variables:
 \describe{
   \item{objectid}{unique id of the object}
   \item{name}{name of the item in English}
@@ -23,7 +24,8 @@
   update with more information about what these values represent)}
   \item{english_name}{the name of the object in English, and a duplicate of
   `name` (may update in the future to include other language names)}
-}}
+}
+}
 \source{
 Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data

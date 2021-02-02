@@ -4,7 +4,8 @@
 \name{crops}
 \alias{crops}
 \title{Crops Data}
-\format{A data frame with 42 rows and 22 variables:
+\format{
+A data frame with 42 rows and 22 variables:
 \describe{
   \item{objectid}{unique id of the object, but note that this joins to the
   seed not the full-grown crop's id in other datasets}
@@ -47,7 +48,8 @@
   certain flowers have various possible colors}
   \item{tint_color_value}{if `tint_color` is true, then sets of rgb values for
   each of the possible tints}
-}}
+}
+}
 \source{
 Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
