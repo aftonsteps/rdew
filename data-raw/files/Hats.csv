@@ -1,4 +1,4 @@
-"ObjectId","Name","Description","SkipHairDraw","IgnoreHairstyleOffset","Prismatic"
+"ObjectId","Name","Description","Skip Hair Draw","Ignore Hairstyle Offset","Prismatic"
 "44","Totem Mask","Don't worry, it won't warp your face...","true","true"," "
 "88","Sunglasses","These give you a relaxed look.","true","true"," "
 "45","Logo Cap","A red cap with a logo on the front.","false","true"," "

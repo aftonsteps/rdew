@@ -49,17 +49,58 @@ A data frame with 42 rows and 22 variables:
   \item{tint_color_value}{if `tint_color` is true, then sets of rgb values for
   each of the possible tints}
 }
+
+A data frame with 15 rows and 27 variables:
+\describe{
+  \item{name}{animal name}
+  \item{days_to_produce}{days to produce item e.g. milk or egg}
+  \item{age_when_mature}{days to achieve maturity}
+  \item{default_produce_index}{object id of regular quality item produced}
+  \item{deluxe_produce_index}{object id of deluxe quality item produced}
+  \item{sound}{sound the animal makes}
+  \item{bounding_box_front_x}{x coordinate of the front-view bounding box}
+  \item{bounding_box_front_y}{y coordinate of the front-view bounding box}
+  \item{bounding_box_front_width}{width of front-view bounding box}
+  \item{bounding_box_front_height}{height of front-view bounding box}
+  \item{bounding_box_side_x}{x coordinate of the side-view bounding box}
+  \item{bounding_box_side_y}{y coordinate of the side-view bounding box}
+  \item{bounding_box_side_width}{width of side-view bounding box}
+  \item{bounding_box_side_height}{height of side-view bounding box}
+  \item{harvest_type}{method of harvesting}
+  \item{change_texture_when_item_ready}{does the animal's coat change texture
+  when it is ready for harvest?}
+  \item{building_type}{type of building the animal lives in}
+  \item{sprite_size_front_width}{front-view width of the sprite}
+  \item{sprite_size_front_height}{front-view height of the sprite}
+  \item{sprite_size_side_width}{side-view width of the sprite}
+  \item{sprite_size_side_height}{side-view height of the sprite}
+  \item{fullness_drain}{rate of decay after feeding}
+  \item{happiness_drain}{rate of decay after saying hello}
+  \item{meat_index}{object id of the meat if the animal is butchered}
+  \item{sell_price}{sell price of the meat if the animal is butchered}
+  \item{english_display_type}{English-language name for the animal}
+  \item{english_display_building}{English-langauge name for the building}
+}
 }
 \source{
 Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
 from the game. Descriptions of the variables summarized from
 \url{https://stardewvalleywiki.com/Modding:Crop_data}
+
+Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+from the game. Descriptions of the variables summarized from
+\url{https://stardewcommunitywiki.com/Modding:Animal_data}
 }
 \usage{
 crops
+
+crops
 }
 \description{
-A dataset containing information about crops in Stardew value.
+A dataset containing information about crops in Stardew Valley.
+
+A dataset containing information about animals in Stardew Valley.
 }
 \keyword{datasets}
