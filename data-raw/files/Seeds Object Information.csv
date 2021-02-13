@@ -1,4 +1,4 @@
-"ObjectId","Name","Price","Edibility","Type & Category","Display Name","Description"
+"ObjectId","Name","Price","Edibility","Type & Category","English Name","English Description"
 "802","Cactus Seeds","0","-300","Seeds -74","Cactus Seeds","Can only be grown indoors. Takes 12 days to mature, and then produces fruit every 3 days."
 "831","Taro Tuber","20","-300","Seeds -74","Taro Tuber","Plant these in warm weather. Takes 10 days to mature. Grows faster if planted near a body of water."
 "833","Pineapple Seeds","240","-300","Seeds -74","Pineapple Seeds","Plant these in warm weather. Takes 14 days to mature, and keeps producing fruit after that."

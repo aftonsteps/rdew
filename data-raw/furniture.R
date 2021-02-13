@@ -1,5 +1,4 @@
 ## Loads furniture dataset
-## TODO fix parsing warning
 ## TODO consider splitting the columns for width in Java?
 
 furniture <-

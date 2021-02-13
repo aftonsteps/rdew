@@ -1,5 +1,4 @@
 ## Loads Animals data
-## TODO: Fix column parsing
 ## TODO: Add convenience dataset for harvest_type to make it more readable
 ## TODO: Remember to update links to the wiki in the documentation once
 ## ownership is transferred to ConcernedApe
