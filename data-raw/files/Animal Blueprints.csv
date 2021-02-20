@@ -1,0 +1,8 @@
+"Name","Is Animal","Price","Source Rectangle For Menu View 1","Source Rectangle For Menu View 2","English Name","Description","Null","Is Farm"
+"Chicken","animal","500","64","64","Chicken","Lays delicious eggs. Comes in two colors.","null","Farm"
+"Duck","animal","1000","64","64","Duck","Lays eggs and occasionally drops feathers.","null","Farm"
+"Rabbit","animal","1500","64","64","Rabbit","These are wooly rabbits!","null","Farm"
+"Cow","animal","1000","64","96","Cow","Produces rich, creamy milk.","null","Farm"
+"Sheep","animal","1500","64","96","Sheep","Can be sheared for valuable wool.","null","Farm"
+"Goat","animal","1500","64","96","Goat","Produces tasty goat's milk!","null","Farm"
+"Pig","animal","2000","64","96","Pig","These are specially trained to find truffles.","null","Farm"

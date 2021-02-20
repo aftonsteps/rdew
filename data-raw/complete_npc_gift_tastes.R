@@ -1,9 +1,6 @@
 ## Creates complete NPC Gift Tastes
 ## Requires NPC Gift Tastes and Universal Gift Tastes datasets
 
-## TODO: add a function that actuall merges the data correctly, instead
-## of a dummy-code 1 id?
-
 if (! "npc_gift_tastes" %in% ls() & ! "universal_gift_tastes" %in% ls()) {
   source("data-raw/npc_gift_tastes.R")
   source("data-raw/universal_gift_tastes.R")

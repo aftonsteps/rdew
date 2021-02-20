@@ -1,5 +1,4 @@
 ## Loads NPC Gift Tastes
-## TODO fix parsing failures
 
 npc_gift_tastes <-
   readr::read_csv(file = "data-raw/files/NPC Gift Tastes.csv") %>%

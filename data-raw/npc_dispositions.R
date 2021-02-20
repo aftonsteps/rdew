@@ -1,5 +1,4 @@
 ## Loads NPC Dispositions
-## TODO add a convenience function for one-hot encoding relationships
 
 npc_dispositions <-
   readr::read_csv("data-raw/files/NPC Dispositions.csv") %>%
