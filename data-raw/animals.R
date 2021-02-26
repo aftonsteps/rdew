@@ -1,6 +1,4 @@
 ## Loads Animals data
-## TODO: Remember to update links to the wiki in the documentation once
-## ownership is transferred to ConcernedApe
 
 animals <-
   readr::read_csv("data-raw/files/Animals.csv") %>%
