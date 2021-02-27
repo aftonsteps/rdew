@@ -18,7 +18,7 @@ crops <-
                   extra = "merge",
                   fill = "right") %>%
   dplyr::mutate(tint_color = as.logical(tint_color)) %>%
-  dplyr::select(objectid,
+  dplyr::select(object_id,
                 dplyr::starts_with(match = "days_in_stage"),
                 dplyr::starts_with(match = "growth_season"),
                 dplyr::everything())

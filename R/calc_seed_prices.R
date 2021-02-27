@@ -1,5 +1,8 @@
 #' Calc Seed Prices
 #'
+#' Calculates the seed prices for purchased seeds based upon if you have a
+#' Jojamart membership or not.
+#'
 #' @param crop_data data.frame containing crop data, defaults to the data
 #' contained in the croptimizer package
 #' @param both_joja_cols logical specifying if you want both JojaMart price
@@ -35,15 +38,15 @@ calc_seed_prices <- function(all_joja_cols = TRUE, joja_member = FALSE) {
                     purchased_price_pierre,
                   purchased_price_joja_no_membership = 2.5 * sell_price) %>%
     dplyr::mutate(purchased_price_pierre =
-                    ifelse(test = objectid == 431, ## Sunflower
+                    ifelse(test = object_id == 431, ## Sunflower
                            yes = 200,
                            no = purchased_price_pierre),
                   purchased_price_joja_no_membership =
-                  ifelse(test = objectid == 431,
+                  ifelse(test = object_id == 431,
                          yes = 125,
                          no = purchased_price_joja_no_membership),
                 purchased_price_joja_with_membership =
-                  ifelse(test = objectid == 431,
+                  ifelse(test = object_id == 431,
                          yes = 100,
                          no = purchased_price_joja_with_membership)) %>%
     dplyr::mutate(purchased_price_pierre =

@@ -21,7 +21,8 @@ data.frame containing crop_data with seed_price and source columns
 appended
 }
 \description{
-Calc Seed Prices
+Calculates the seed prices for purchased seeds based upon if you have a
+Jojamart membership or not.
 }
 \examples{
 fall_crops <-

@@ -1,12 +1,15 @@
 ## TODO's
 
-## TODO add acheivements data
-## TODO consider renaming all instances of "objectid" to
-## "object_id" ?
+## TODO what is the difference between NA and default in unlock_condition
+## for recipes?
+## TODO Add convenience function to make recipes wide?
+## TODO figure out how to send convert_to_na as a tidy style function
+## TODO figure out what the space-delimited -1's mean in the fishing cols in
+## locations dataset
 ## TODO add a convenience function for NPC dispositions for
 ## one-hot encoding relationships
 ## TODO: Remember to update links to the wiki in the documentation once
 ## ownership is transferred to ConcernedApe
-## TODO update load_all
 ## TODO write vignettes
-## Example: joining hats to achievments to see what hats you get
+## Example: joining hats to achievements to see what hats you get
+## TODO write documentation
