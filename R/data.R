@@ -1,5 +1,27 @@
 #' Animals Dataset
 #'
+#' A dataset containing information about achievements in Stardew Valley.
+#' Achievements are in-game events or tasks which, when completed, make a new
+#' hat available for purchase in the hat shop.
+#'
+#' @format A data frame with 30 rows and 6 variables:
+#' \describe{
+#'   \item{id}{the achievement id}
+#'   \item{name}{the name of the achievement}
+#'   \item{description}{a longer description of the achievement}
+#'   \item{display_on_collections_tab_before_earned}{?}
+#'   \item{prerequisite_achievement}{achievement that must be completed first}
+#'   \item{hat_earned}{the id of the hat earned by the achievement, which can
+#'   be joined to the column `object_id` in the `hats` dataset}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Hat_data}
+"achievements"
+
+#' Animals Dataset
+#'
 #' A dataset containing information about animals in Stardew Valley.
 #'
 #' @format A data frame with 15 rows and 27 variables:

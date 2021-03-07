@@ -11,5 +11,6 @@
 ## TODO: Remember to update links to the wiki in the documentation once
 ## ownership is transferred to ConcernedApe
 ## TODO write vignettes
-## Example: joining hats to achievements to see what hats you get
+## Example: introduction to the package
+## Example: look at animals and animal blueprints
 ## TODO write documentation

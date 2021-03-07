@@ -1,0 +1,78 @@
+---
+title: "Example Analysis: Hats & Achievements"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example Analysis: Hats and Achievements}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rstardew)
+```
+
+## Introduction
+`rstardew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
+is an example analysis using the hats and achievements datasets, meant to demonstrate what you can do with this package.
+
+## Hats
+Hats data is available in the `hats` dataset. We can take a look at the variables and see it contains `object_id`, `description`, `skip_hair_draw`, `ignore_hairstyle_offset`, and `prismatic` (full documentation can be found with `?hats`).
+
+```{r peek-at-hats}
+head(hats)
+```
+
+## Achievements
+Achievements exist in the `achievements` dataset, and contain the columns 
+`id`, `name`, `description`, `display_on_collections_tab_before_earned`,
+`prerequisite_achievement`, and `hat_earned`. 
+
+Let's look at which hats are earned from which achievements. Hats are earned from certain in-game events, called achievements, so we can join achievements to hats
+to get the full details of the hat earned for each achievement. We'll use
+a left join here to only get the hats that are earned with an achievement, as 
+there are even more hats that are just not earned with an achievement.
+
+```{r join-achievements-and-hats}
+achievements_and_hats <-
+  rstardew::achievements %>%
+  dplyr::left_join(hats, 
+                   by = c("hat_earned" = "object_id"), 
+                   suffix = c("_achievement", "_hat"))
+
+head(achievements_and_hats)
+```
+
+We get a few duplicate columns resolved with `_achievement` or `_hat`, but this is because
+the column names overlapped, not because these should have been join columns (for
+example, a description of a hat is different from a description of an achievement event).
+
+```{r look-at-joined-data}
+achievements_and_hats %>% 
+  dplyr::select(name_achievement, 
+                description_achievement, 
+                name_hat, 
+                description_hat)
+```
+
+If we take a look at the hat name and achievement name/description, we can see 
+that some of them match the spirit of the event. For example, if you complete
+the Fisherman achievement, you get a fisherman-style Sou'wester, and if you
+complete the Cliques quest, you get a Tiara.
+
+```{r look-at-aptly-named-data}
+achievements_and_hats %>% 
+  dplyr::filter(name_hat %in% c("Sou'wester", "Tiara")) %>%
+  dplyr::select(name_achievement, 
+                description_achievement, 
+                name_hat, 
+                description_hat)
+```
+
+
