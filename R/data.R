@@ -108,7 +108,6 @@
 #' \url{https://stardewcommunitywiki.com/Modding:Animal_data}
 "animal_blueprints"
 
-
 #' Big Craftables Data
 #'
 #' A dataset containing information about big craftables items in the game
@@ -187,6 +186,82 @@
 #' Descriptions of the variables summarized from \url{https://stardewvalleywiki.com/Modding:Big_craftables_data}
 "building_blueprints"
 
+#' Bundles Data
+#'
+#' A dataset containing information about the bundles delivered to the Community
+#' Center.
+#'
+#' @format A data frame with 31 rows and 11 variables:
+#' \describe{
+#'   \item{room_id_and_sprite_index}{Unique id of the room and sprite, which
+#'   when split by / will return the name of the Community Center room and the
+#'   id of the sprite for bundle (each room has multiple bundles)}
+#'   \item{bundle_name}{the name of the bundle}
+#'   \item{reward_type_of_object}{The type of the reward earned by delivering
+#'   the bundle, where the type may be O for "object," BO for "big object,"
+#'   F for "furniture," H  for "hat", C for "clothing", or R for "ring". A bundle
+#'   reward may include more than one type.}
+#'   \item{reward_object_id}{id of the object given as a reward
+#'   for completing the bundle}
+#'   \item{reward_number_of_object_given}{The count of the object given as a reward}
+#'   \item{required_object_id}{Space-delimited id's for the objects required
+#'   to complete the bundle}
+#'   \item{required_object_is_gold}{boolean representing if the object required
+#'   to complete the quest is gold}
+#'   \item{required_number_of_objects}{Required number of each object, if
+#'   submitted to complete the bundle}
+#'   \item{required_min_quality_of_objects}{Required quality of the object for the
+#'   bundle}
+#'   \item{color_index}{Color index of the bundle color}
+#'   \item{min_number_of_items}{a description of the building}
+#
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game.
+#' Descriptions of the variables summarized from \url{https://stardewvalleywiki.com/Modding:Bundles}
+"bundles"
+
+#' Caught Fish
+#'
+#' A dataset containing information about fish that are caught with a fishing pole.
+#'
+#' The spawn rate for fish functions by first shuffling the fish that are eligible
+#' based on season, location, and time of day (plus seaweed/algae), and then calculating the base
+#' spawn probability for the first fish of that list:
+#'
+#'  base spawn probability = spawn multiplier - max(0, minimum depth - actual depth) × depth multiplier × spawn multiplier + fishing level / 50
+#'
+#'  This probability is capped at a maximum of 90%. Then, the game rolls to determine
+#'  if that fish will successfully spawn. If it does, then the player has a chance
+#'  to catch it. If it does not succeed, then the next fish in the list is rolled
+#'  for. If no fish succeed, then a random trash item spawns.
+#'
+#' @format A data frame with 55 rows and 15 variables:
+#' \describe{
+#'   \item{object_id}{The object id of the fish}
+#'   \item{name}{The name of the fish}
+#'   \item{chance_of_darting}{The probability of the fish making a dart}
+#'   \item{darting_randomness}{A measure of the degree of randomness in darting}
+#'   \item{min_size}{Minimum size of the fish}
+#'   \item{max_size}{Maximum size of the fish}
+#'   \item{min_time_of_spawn}{Earliest time of day for the spawn}
+#'   \item{max_time_of_spawn}{Latest time of day for the spawn}
+#'   \item{weather}{Weather during which the fish can appear}
+#'   \item{locations}{Locations where the fish can appear}
+#'   \item{min_depth}{Minimum depth where the fish can appear, where depth is
+#'   the distance the bobber is from the shore}
+#'   \item{spawn_multiplier}{The multiplier used for spawn rate calculations}
+#'   \item{depth_multiplier}{The depth multiplier use in spawn rate calculations}
+#'   \item{min_fishing_level}{The minimum character fishing level required for this
+#'   fish to appear}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game.
+#' Descriptions of the variables summarized from \url{https://stardewvalleywiki.com/Modding:Fish_data}
+"caught_fish"
+
 #' Complete NPC Gift Tastes
 #'
 #' A dataset containing NPC gift tastes, including universal tastes.
@@ -213,12 +288,19 @@
 
 #' Crops Data
 #'
-#' A dataset containing information about crops in Stardew Valley.
+#' A dataset containing information about seeds, crops, crop growing
+#' Stardew Valley. Much of this information concerns the growing of crops from
+#' seeds. If you want information about the crop (e.g. fruits and vegetables)
+#' that result from growing, you may want to join this table to `crops_object_information`
+#' on `index_of_harvest` = `object_id`.
 #'
 #' @format A data frame with 42 rows and 22 variables:
 #' \describe{
 #'   \item{objectid}{unique id of the object, but note that this joins to the
-#'   seed not the full-grown crop's id in other datasets}
+#'   seed's id, not the full-grown crop's id in other datasets. If you want to
+#'   join this crops table to the information about the resulting crop (e.g. fruit
+#'   or vegatable resulting from growing) then join on `crops$index_of_harvest` =
+#'   `crops_object_information$id`.}
 #'   \item{days_in_stage_1_growth}{days in first stage of growth}
 #'   \item{days_in_stage_2_growth}{days in second stage of growth}
 #'   \item{days_in_stage_3_growth}{days in third stage of growth, and if NA then
@@ -265,3 +347,31 @@
 #' \url{https://stardewvalleywiki.com/Modding:Crop_data}
 "crops"
 
+#' Crops Object Information
+#'
+#' A dataset containing more detailed information about crops in Stardew Valley.
+#' If you want information about the seeds and growing patterns which produce
+#' these crops, you may way to join to the `crops` table on `object_id` =
+#' `index_of_harvest`.
+#'
+#' @format A data frame with 42 rows and 22 variables:
+#' \describe{
+#'   \item{objectid}{unique id of the crop, which joins to `crops` columns
+#'   `index_of_harvest`}
+#'   \item{name}{The name of the crop}
+#'   \item{price}{The sell price of the crop (note that this is sell price, not purchase price)}
+#'   \item{edibility}{Value used to determine health/energy regained by eating the item.
+#'   The energy gained is 2.5 x `edibility`, and the health gained is 1.125 x `edibility`.
+#'   Note that the amount of health shown in the tooltip is only 1 x `edibility` but
+#'   the actual amount gained is 1.125 x `edibility`.}
+#'   \item{type}{The object type}
+#'   \item{category}{The category of the crop}
+#'   \item{english_name}{The name of the object in English, and a duplicate of
+#'   `name` (may update in the future to include other language names)}
+#'   \item{description}{A description of the crop}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewvalleywiki.com/Modding:Object_data}
+"crops_object_information"

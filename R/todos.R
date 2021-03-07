@@ -1,5 +1,10 @@
 ## TODO's
-
+## TODO split roomid and sprite in bundles
+## TODO get rid of the "unused" columns
+## TODO there is a mistake in the bundles where only the first required
+## item is showing up, not the entire space-delimited list. It's actually
+## a space-delimited set of triples, with the first as an ID, the second as
+## a
 ## TODO what is the difference between NA and default in unlock_condition
 ## for recipes?
 ## TODO Add convenience function to make recipes wide?
