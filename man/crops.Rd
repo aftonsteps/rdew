@@ -8,7 +8,10 @@
 A data frame with 42 rows and 22 variables:
 \describe{
   \item{objectid}{unique id of the object, but note that this joins to the
-  seed not the full-grown crop's id in other datasets}
+  seed's id, not the full-grown crop's id in other datasets. If you want to
+  join this crops table to the information about the resulting crop (e.g. fruit
+  or vegatable resulting from growing) then join on `crops$index_of_harvest` =
+  `crops_object_information$id`.}
   \item{days_in_stage_1_growth}{days in first stage of growth}
   \item{days_in_stage_2_growth}{days in second stage of growth}
   \item{days_in_stage_3_growth}{days in third stage of growth, and if NA then
@@ -60,6 +63,10 @@ from the game. Descriptions of the variables summarized from
 crops
 }
 \description{
-A dataset containing information about crops in Stardew Valley.
+A dataset containing information about seeds, crops, crop growing
+Stardew Valley. Much of this information concerns the growing of crops from
+seeds. If you want information about the crop (e.g. fruits and vegetables)
+that result from growing, you may want to join this table to `crops_object_information`
+on `index_of_harvest` = `object_id`.
 }
 \keyword{datasets}

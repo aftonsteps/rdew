@@ -375,3 +375,87 @@
 #' from the game. Descriptions of the variables summarized from
 #' \url{https://stardewvalleywiki.com/Modding:Object_data}
 "crops_object_information"
+
+#' Furniture
+#'
+#' A dataset containing information about furniture in Stardew Valley.
+#'
+#' @format A data frame with 347 rows and 9 variables:
+#' \describe{
+#'   \item{objectid}{Unique id of the furniture item}
+#'   \item{name}{The name of the piece of furniture}
+#'   \item{source_rectangle_width}{The width of the rectangle of the item}
+#'   \item{source_rectangle_width}{The height of the rectangle of the item}
+#'   \item{bounding_box_width}{The width of the object's bounding box}
+#'   \item{bounding_box_height}{The height of the object's bounding box}
+#'   \item{rotations}{The number of possible rotations of the object, where 1 =
+#'   only one view, 2 = two rotations (180 degrees), and 4 = four rotations (90
+#'   degrees)}
+#'   \item{price}{The price of the furniture}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Furniture_data}
+"furniture"
+
+#' Hats
+#'
+#' A dataset containing information about hats in Stardew Valley. Hats can be
+#' purchased from the hat shop owned by the mouse, and new hats are unlocked
+#' when certain in-game achievements are completed.
+#'
+#' @format A data frame with 94 rows and 6 variables:
+#' \describe{
+#'   \item{object_id}{Unique id of the hat}
+#'   \item{name}{The name of the hat}
+#'   \item{description}{Description of the hat}
+#'   \item{skip_hair_draw}{If true, then the hat does not change the player's
+#'   hairstyle, but if false, then it may}
+#'   \item{ignore_hairstyle_offset}{If true, then the hat occupies a fixed position,
+#'   but if false, then it adjsut to the line of the player's hairstyle}
+#'   \item{prismatic}{Is the hat a prismatic item?}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Hat_data}
+"hats"
+
+#' Locations
+#'
+#' A dataset containing information about locations in Stardew Valley.
+#' Locations have different foraging and fishing options depending on the time
+#' of the year. Each datapoint in this dataset contains a space delimited list
+#' of pairs. For foraging, this alternates the object id of the item with the probability it
+#' appears (e.g. '384 .08 589 .09' means that object 384 has an 8% probability
+#' of appearing and object 589 has a 9% probability of appearing). For
+#' fish, this alternates the object id with the location id. Location id is -1 for
+#' any pond or river, 0 for river.
+#'
+#' @format A data frame with 23 rows and 10 variables:
+#' \describe{
+#'   \item{name}{Name of the location}
+#'   \item{spring_foraging}{Object id's and probabilities of items which can be foraged in this area
+#'   during spring}
+#'   \item{summer_foraging}{Object id's and probabilities of items which can be foraged in this area
+#'   during summer}
+#'   \item{fall_foraging}{Object id's and probabilities of items which can be foraged in this area
+#'   during fall}
+#'   \item{winter_foraging}{Object id's and probabilities of items which can be foraged in this area
+#'   during winter}
+#'   \item{spring_fishing}{Object id's and probabilities of fish which can be caught in this area
+#'   during spring}
+#'   \item{summer_fishing}{Object id's and probabilities of fish which can be caught in this area
+#'   during summer}
+#'   \item{fall_fishing}{Object id's of and probabilities fish which can be caught in this area
+#'   during fall}
+#'   \item{winter_fishing}{Object id's and probabilities of fish which can be caught in this area
+#'   during winter}
+#'   \item{artifact_data}{Object id's and probabilities of artifacts which can be found in this area}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Hat_data}
+"locations"
