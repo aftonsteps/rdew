@@ -286,6 +286,65 @@
 #' \url{https://stardewvalleywiki.com/Modding:Gift_taste_data}
 "complete_npc_gift_tastes"
 
+#' Cooking Recipes
+#'
+#' A dataset containing recipes that are made by cooking.
+#'
+#' @format A data frame with 80 rows and 4 variables:
+#' \describe{
+#'   \item{name}{The name of the cooking recipe}
+#'   \item{ingredients}{A space delimited set of pairs, where the first item in
+#'   the pair is either an entire category (in which case, it is preceded by a
+#'   negative sign) or the object id of a specific item, and where the second item
+#'   in the pair is the number of objects required for the recipe}
+#'   \item{yield_object_id}{The object id of the resulting item}
+#'   \item{unlock_conditions}{A space delimited list of the conditions for unlocking
+#'   the recipe. If not null, the first element is a letter that represents the type of
+#'   event, with "f" for friendship, "l" for player level, and "s" for skill. If "l",
+#'   then the next value is the level required. If "f" then the second element
+#'   is the character to befriend and the third is the required friendship level.
+#'   If "s," then the second element is the skill required and the third is the level
+#'   required in this skill. If the unlock condition is "null" or "default", then it
+#'   is either automatically unlocked at the start of the game, or it has a more
+#'   complex storyline event in order to unlock it.}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewvalleywiki.com/Modding:Recipe_data}
+"cooking_recipes"
+
+#' Crafting Recipes
+#'
+#' A dataset containing recipes that are made by crafting.
+#'
+#' @format A data frame with 80 rows and 5 variables:
+#' \describe{
+#'   \item{name}{The name of the cooking recipe}
+#'   \item{ingredients}{A space delimited set of pairs, where the first item in
+#'   the pair is either an entire category (in which case, it is preceded by a
+#'   negative sign) or the object id of a specific item, and where the second item
+#'   in the pair is the number of objects required for the recipe}
+#'   \item{yield_object_id}{The object id of the resulting item}
+#'   \item{big_craftable}{Whether or not the object is a big craftable item, where
+#'   possible values are "Big Craftable", "Ring" (if it is a ring), or "Other"}
+#'   \item{unlock_conditions}{A space delimited list of the conditions for unlocking
+#'   the recipe. If not null, the first element is a letter that represents the type of
+#'   event, with "f" for friendship, "l" for player level, and "s" for skill. If "l",
+#'   then the next value is the level required. If "f" then the second element
+#'   is the character to befriend and the third is the required friendship level.
+#'   If "s," then the second element is the skill required and the third is the level
+#'   required in this skill. If the unlock condition is "null" or "default", then it
+#'   is either automatically unlocked at the start of the game, or it has a more
+#'   complex storyline event in order to unlock it.}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewvalleywiki.com/Modding:Recipe_data}
+"crafting_recipes"
+
+
 #' Crops Data
 #'
 #' A dataset containing information about seeds, crops, crop growing
@@ -459,3 +518,92 @@
 #' from the game. Descriptions of the variables summarized from
 #' \url{https://stardewcommunitywiki.com/Modding:Hat_data}
 "locations"
+
+#' Rings
+#'
+#' A dataset containing information about rings in Stardew Valley. Rings,
+#' with the exception of the wedding ring, provide a player with buffs and
+#' special abilities.
+#'
+#' @format A data frame with 20 rows and 7 variables:
+#' \describe{
+#'   \item{object_id}{Object id of the ring}
+#'   \item{name}{Name of the ring}
+#'   \item{price}{Price of the ring}
+#'   \item{edibility}{Edibility typically represents a variable used to
+#'   calculated the number of health and energy points regained by eating
+#'   the item, but all rings are inedible}
+#'   \item{type}{Type of object (always Ring)}
+#'   \item{english_name}{The name of the object in English, and a duplicate of
+#'   `name` (may update in the future to include other language names)}
+#'   \item{description}{Description of the ring}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Object_data}
+"rings"
+
+#' Geodes
+#'
+#' A dataset containing information about the geodes in Stardew Valley. Geodes
+#' can be broken open by the blacksmith and may reveal certain items inside,
+#' based upon their probabilities of appearing.
+#'
+#' @format A data frame with 4 rows and 7 variables:
+#' \describe{
+#'   \item{object_id}{Object id of the geode}
+#'   \item{name}{Name of the geode}
+#'   \item{price}{Price of the geode}
+#'   \item{edibility}{Edibility typically represents a variable used to
+#'   calculated the number of health and energy points regained by eating
+#'   the item, but all geodes are inedible}
+#'   \item{type}{Type of object (always Basic)}
+#'   \item{english_name}{The name of the object in English, and a duplicate of
+#'   `name` (may update in the future to include other language names)}
+#'   \item{description}{Description of the geode}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Object_data}
+"geodes"
+
+#' Foods And Drinks
+#'
+#' A dataset containing information about foods and drinks in Stardew Valley.
+#' Foods and drinks can be purchased and crafted.
+#'
+#' @format A data frame with 103 rows and 21 variables:
+#' \describe{
+#'   \item{object_id}{Object id of the food or drink item}
+#'   \item{name}{Name of the food or drink item}
+#'   \item{price}{Price of the food or drink item}
+#'   \item{edibility}{Value used to determine health/energy regained by eating the item.
+#'   The energy gained is 2.5 x `edibility`, and the health gained is 1.125 x `edibility`.
+#'   Note that the amount of health shown in the tooltip is only 1 x `edibility` but
+#'   the actual amount gained is 1.125 x `edibility`.}
+#'   \item{category}{The category of the food or drink item}
+#'   \item{type}{Type of object food or drink item}
+#'   \item{english_name}{The name of the object in English, and a duplicate of
+#'   `name` (may update in the future to include other language names)}
+#'   \item{description}{Description of the food or drink item}
+#'   \item{food_or_drink}{Is the item food or drink?}
+#'   \item{buff_farming}{}
+#'   \item{buff_fishing}{}
+#'   \item{buff_mining}{}
+#'   \item{buff_digging_unimplemented}{}
+#'   \item{buff_luck}{}
+#'   \item{buff_foraging}{}
+#'   \item{buff_crafting}{}
+#'   \item{buff_max_energy}{}
+#'   \item{buff_magnetism}{}
+#'   \item{buff_speed}{}
+#'   \item{buff_defense}{}
+#'   \item{buff_duration}{}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Object_data}
+"foods_and_drinks"
