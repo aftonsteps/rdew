@@ -16,7 +16,6 @@ A data frame with 55 rows and 15 variables:
   \item{min_time_of_spawn}{Earliest time of day for the spawn}
   \item{max_time_of_spawn}{Latest time of day for the spawn}
   \item{weather}{Weather during which the fish can appear}
-  \item{locations}{Locations where the fish can appear}
   \item{min_depth}{Minimum depth where the fish can appear, where depth is
   the distance the bobber is from the shore}
   \item{spawn_multiplier}{The multiplier used for spawn rate calculations}
@@ -48,5 +47,8 @@ spawn probability for the first fish of that list:
  if that fish will successfully spawn. If it does, then the player has a chance
  to catch it. If it does not succeed, then the next fish in the list is rolled
  for. If no fish succeed, then a random trash item spawns.
+
+ If you are looking for the location in which the fish spawn, see the `locations`
+ dataset.
 }
 \keyword{datasets}

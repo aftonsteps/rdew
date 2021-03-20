@@ -1,0 +1,29 @@
+---
+title: "Code-Based Information"
+author: "Afton Coombs"
+date: "3/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro
+This document lists data taken from the game code, rather than the game's flat files, and lists where to find this info (at the time of writing).
+
+If a dataset comes from flat file (.xnb file) then it is already parsed by the stardewdata program and provided to the intake 
+scripts in this library. If it is based in game code, however,
+this required manual investigation, so these datapoints are added 
+in the intake scripts.
+
+Datasets that partially or completely rely on game code, and the object/method that contains this information:
+
+- `cooking_recipes`:
+  - "Cookies": Event.skipEvent()
+- `categories`:
+  - All categories: Object.getCategoryName() which uses `Content/Strings/StringsFromCSFiles.xnb
+- `furniture`:
+  - Furniture types: `StardewValley.Objects.Furniture` which just lists out
+  the numeric id's for each furniture type
+  - Furniture default source rectangle size: `StardewValley.Objects.Furniture.getDefaultSourceRectForType()`

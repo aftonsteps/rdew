@@ -21,9 +21,10 @@ A data frame with 80 rows and 5 variables:
   then the next value is the level required. If "f" then the second element
   is the character to befriend and the third is the required friendship level.
   If "s," then the second element is the skill required and the third is the level
-  required in this skill. If the unlock condition is "null" or "default", then it
-  is either automatically unlocked at the start of the game, or it has a more
-  complex storyline event in order to unlock it.}
+  required in this skill. If the unlock condition "default", then it
+  is automatically unlocked at the start of the game. Some events may have
+  more complex unlock conditions described in text, rather than followin the
+  above convention.}
 }
 }
 \source{
