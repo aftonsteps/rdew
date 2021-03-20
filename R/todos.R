@@ -1,6 +1,4 @@
 ## TODO's
-## threadR
-# https://fatherhood.gov/jsonapi/node/dad_jokes -> curl that and receive delicious dad jokes
 ## TODO: replace the null/default values in cooking recipes with the complex
 ## event by decompiling the game code
 ## TODO figure out what the fishing locations in the locations dataset
