@@ -191,11 +191,11 @@
 #' A dataset containing information about the bundles delivered to the Community
 #' Center.
 #'
-#' @format A data frame with 31 rows and 11 variables:
+#' @format A data frame with 31 rows and 10 variables:
 #' \describe{
-#'   \item{room_id_and_sprite_index}{Unique id of the room and sprite, which
-#'   when split by / will return the name of the Community Center room and the
-#'   id of the sprite for bundle (each room has multiple bundles)}
+#'   \item{room_id}{Name of the room which combined with sprite_index will
+#'   uniquely identify each row (each room has multiple bundles)}
+#'   \item{sprite_index}{The index of the sprite used for the bundle image}
 #'   \item{bundle_name}{the name of the bundle}
 #'   \item{reward_type_of_object}{The type of the reward earned by delivering
 #'   the bundle, where the type may be O for "object," BO for "big object,"
@@ -204,17 +204,16 @@
 #'   \item{reward_object_id}{id of the object given as a reward
 #'   for completing the bundle}
 #'   \item{reward_number_of_object_given}{The count of the object given as a reward}
-#'   \item{required_object_id}{Space-delimited id's for the objects required
-#'   to complete the bundle}
-#'   \item{required_object_is_gold}{boolean representing if the object required
+#'   \item{required_objects}{Space-delimited triples for the items required in
+#'   the bundle. Each triple contains (in order) the object id, the number
+#'   of objects required, and the minimum quality of object. If the first value
+#'   (for object id) is -1, then the required object is an amount of gold, and
+#'   both the quality and number of items required should be the same,
+#'   representing the amount of gold.}
+#'   \item{required_object_is_gold}{Type logical representing if the object required
 #'   to complete the quest is gold}
-#'   \item{required_number_of_objects}{Required number of each object, if
-#'   submitted to complete the bundle}
-#'   \item{required_min_quality_of_objects}{Required quality of the object for the
-#'   bundle}
 #'   \item{color_index}{Color index of the bundle color}
 #'   \item{min_number_of_items}{a description of the building}
-#
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
@@ -610,3 +609,31 @@
 #' from the game. Descriptions of the variables summarized from
 #' \url{https://stardewcommunitywiki.com/Modding:Object_data}
 "foods_and_drinks"
+
+#' Objects
+#'
+#' A dataset containing information about various objects found in Stardew
+#' Valley. Certain objects are not contained in this dataset, specifically
+#' crops, foods and drinks, geodes, and rings, which you can find in the
+#' `crops`, `food_and_drinks`, `geodes`, and `rings` datasets.
+#'
+#' @format A data frame with 702 rows and 8 variables:
+#' \describe{
+#'   \item{object_id}{Object id of the object}
+#'   \item{name}{Name of the object}
+#'   \item{price}{Price of the object}
+#'   \item{edibility}{Value used to determine health/energy regained by eating the item.
+#'   The energy gained is 2.5 x `edibility`, and the health gained is 1.125 x `edibility`.
+#'   Note that the amount of health shown in the tooltip is only 1 x `edibility` but
+#'   the actual amount gained is 1.125 x `edibility`.}
+#'   \item{category}{The category of the object}
+#'   \item{type}{Type of object object}
+#'   \item{english_name}{The name of the object in English, and a duplicate of
+#'   `name` (may update in the future to include other language names)}
+#'   \item{description}{Description of the food or drink item}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Object_data}
+"objects"

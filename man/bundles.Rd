@@ -5,11 +5,11 @@
 \alias{bundles}
 \title{Bundles Data}
 \format{
-A data frame with 31 rows and 11 variables:
+A data frame with 31 rows and 10 variables:
 \describe{
-  \item{room_id_and_sprite_index}{Unique id of the room and sprite, which
-  when split by / will return the name of the Community Center room and the
-  id of the sprite for bundle (each room has multiple bundles)}
+  \item{room_id}{Name of the room which combined with sprite_index will
+  uniquely identify each row (each room has multiple bundles)}
+  \item{sprite_index}{The index of the sprite used for the bundle image}
   \item{bundle_name}{the name of the bundle}
   \item{reward_type_of_object}{The type of the reward earned by delivering
   the bundle, where the type may be O for "object," BO for "big object,"
@@ -18,14 +18,14 @@ A data frame with 31 rows and 11 variables:
   \item{reward_object_id}{id of the object given as a reward
   for completing the bundle}
   \item{reward_number_of_object_given}{The count of the object given as a reward}
-  \item{required_object_id}{Space-delimited id's for the objects required
-  to complete the bundle}
-  \item{required_object_is_gold}{boolean representing if the object required
+  \item{required_objects}{Space-delimited triples for the items required in
+  the bundle. Each triple contains (in order) the object id, the number
+  of objects required, and the minimum quality of object. If the first value
+  (for object id) is -1, then the required object is an amount of gold, and
+  both the quality and number of items required should be the same,
+  representing the amount of gold.}
+  \item{required_object_is_gold}{Type logical representing if the object required
   to complete the quest is gold}
-  \item{required_number_of_objects}{Required number of each object, if
-  submitted to complete the bundle}
-  \item{required_min_quality_of_objects}{Required quality of the object for the
-  bundle}
   \item{color_index}{Color index of the bundle color}
   \item{min_number_of_items}{a description of the building}
 }

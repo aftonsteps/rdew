@@ -2,11 +2,15 @@ Package: rstardew
 Title: R Stardew
 Version: 0.0.9
 Authors@R: 
-    person(given = "Afton",
-           family = "Coombs",
-           role = c("aut", "cre"),
-           email = "aftoncoombs@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    c(person(given = "Afton",
+             family = "Coombs",
+             role = c("aut", "cre"),
+             email = "aftoncoombs@example.com",
+             comment = c(ORCID = "YOUR-ORCID-ID")),
+      person(given = "Kyle",
+             family = "Harris",
+             role = "aut",
+             email = "koderkow@gmail.com"))
 Description: Holds data related to the game Stardew Valley
 License: GPL-3
 Encoding: UTF-8
