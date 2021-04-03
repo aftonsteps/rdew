@@ -2,10 +2,8 @@
 ## TODO add a convenience dataset for mapping these categories to
 ## a human readable name
 ## TODO missing basic/other objects
-## TODO replace null recipes with complex unlock event (might involve
+## TODO replace null crafting recipes with complex unlock event (might involve
 ## parsing game code)
-
-
 ## TODO fix broken bundles intake script
 ## TODO split roomid and sprite in bundles
 ## TODO get rid of the "unused" columns
