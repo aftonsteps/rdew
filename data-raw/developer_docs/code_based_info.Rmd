@@ -27,3 +27,4 @@ Datasets that partially or completely rely on game code, and the object/method t
   - Furniture types: `StardewValley.Objects.Furniture` which just lists out
   the numeric id's for each furniture type
   - Furniture default source rectangle size: `StardewValley.Objects.Furniture.getDefaultSourceRectForType()`
+  - Furniture default bounding box size: `StardewValley.Objects.Furniture.getDefaultBoundingBoxForType()`

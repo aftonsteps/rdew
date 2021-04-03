@@ -29,7 +29,11 @@ furniture_dims <-
              default_rectangle_width =
                c(1, 2, 3, 2, 2, 5, 2, 1, 1, 1, 2, 2, 3, 1, 2, 1, 1, 1),
              default_rectangle_height =
-               c(2, 2, 2, 2, 2, 3, 2, 3, 2, 2, 3, 3, 2, 2, 5, 1, 2, 2)) %>%
+               c(2, 2, 2, 2, 2, 3, 2, 3, 2, 2, 3, 3, 2, 2, 5, 1, 2, 2),
+             default_bounding_box_width =
+               c(1, 2, 3, 2, 2, 5, 2, 1, 1, 1, 2, 2, 3, 1, 2, 1, 1, 1),
+             default_bounding_box_height =
+               c(1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2)) %>%
   dplyr::left_join(furniture_types, by = "type_id")
 
 furniture <-
@@ -45,6 +49,16 @@ furniture <-
                   ifelse(test = is.na(source_rectangle_height) ||
                            source_rectangle_height == -1,
                          yes = default_rectangle_height,
-                         no = source_rectangle_height))
+                         no = source_rectangle_height),
+                bounding_box_width =
+                  ifelse(test = is.na(bounding_box_width) ||
+                           bounding_box_width == -1,
+                         yes = default_bounding_box_width,
+                         no = bounding_box_width),
+                bounding_box_height =
+                  ifelse(test = is.na(bounding_box_height) ||
+                           bounding_box_height == -1,
+                         yes = default_bounding_box_height,
+                         no = bounding_box_height))
 
 usethis::use_data(furniture, overwrite = TRUE)

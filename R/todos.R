@@ -2,10 +2,6 @@
 ## TODO add a convenience dataset for mapping these categories to
 ## a human readable name
 ## TODO missing basic/other objects
-## TODO furniture NA's are incorrect -- -1 actually corresponds to default values
-## that can be gotten in Furniture.cs::getDefaultSourceRectForType() and
-## Furniture.cs::getDefaultBoundingBoxForType(). I finished the source rectangle
-## and I still need to do the bounding box
 ## TODO replace null recipes with complex unlock event (might involve
 ## parsing game code)
 
