@@ -1,4 +1,6 @@
 ## TODO's
+## TODO look into list cols/nesting for relationships and for unlock conditions
+## for the recipes
 ## TODO add the entire objects dataset and get rid of rings, food and drink,
 ## seeds object info, and crops object info. don't forget the raw files!
 ## TODO consider joining crops and seeds object info to crops to make
