@@ -1,4 +1,4 @@
-"Room Id And Sprite Index","Bundle Name","Reward Type Of Object","Reward Objects","Number of Reward Objects Given","Required Objects","Color Index","Number Of Items Required"
+"Room Id And Sprite Index","Bundle Name","Reward Type Of Object","Reward Object ID","Number of Reward Object Given","Required Objects","Color Index","Number Of Objects Required"
 "Boiler Room/20","Blacksmith's","BO","13","1","334 1 0 335 1 0 336 1 0","2",
 "Bulletin Board/35","Fodder","BO","104","1","262 10 0 178 10 0 613 3 0","3",
 "Bulletin Board/32","Field Research","BO","20","1","422 1 0 392 1 0 702 1 0 536 1 0","5",
