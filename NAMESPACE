@@ -3,5 +3,4 @@
 export("%>%")
 export(calc_seed_prices)
 export(convert_to_na)
-export(split_ingredients)
 importFrom(magrittr,"%>%")

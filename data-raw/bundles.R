@@ -1,4 +1,6 @@
 ## Loads Bundles data
+
+## Load dependencies
 load_if_doesnt_exist("item_quality")
 
 bundles <-
@@ -16,10 +18,19 @@ bundles <-
                               varname = "required") %>%
   dplyr::mutate(required_object_is_gold = grepl(pattern = "-1",
                                                 x = required_object_id)) %>%
-  dplyr::relocate(room_id:required_object_id, required_object_is_gold) %>%
   dplyr::rename(required_minimum_quality_num = required_minimum_quality) %>%
   dplyr::left_join(item_quality,
                    by = c("required_minimum_quality_num" = "value")) %>%
-  dplyr::rename(required_minimum_quality = quality)
+  dplyr::rename(required_minimum_quality = quality) %>%
+  dplyr::left_join(objects %>%
+                     dplyr::select(object_id, reward_object = name),
+                   by = c("reward_objects" = "object_id")) %>%
+  dplyr::left_join(objects %>%
+                     dplyr::select(object_id, required_object = name),
+                   by = c("required_object_id" = "object_id")) %>%
+  dplyr::relocate(reward_object, .after = reward_objects) %>%
+  dplyr::relocate(required_object_is_gold,
+                  .after = required_object_id) %>%
+  dplyr::relocate(required_object, .after = required_object_id)
 
 usethis::use_data(bundles, overwrite = TRUE)
