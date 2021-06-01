@@ -11,7 +11,7 @@ A data frame with 42 rows and 22 variables:
   seed's id, not the full-grown crop's id in other datasets. If you want to
   join this crops table to the information about the resulting crop (e.g. fruit
   or vegatable resulting from growing) then join on `crops$index_of_harvest` =
-  `crops_object_information$id`.}
+  `object_information$id`.}
   \item{days_in_stage_1_growth}{days in first stage of growth}
   \item{days_in_stage_2_growth}{days in second stage of growth}
   \item{days_in_stage_3_growth}{days in third stage of growth, and if NA then
@@ -66,7 +66,7 @@ crops
 A dataset containing information about seeds, crops, crop growing
 Stardew Valley. Much of this information concerns the growing of crops from
 seeds. If you want information about the crop (e.g. fruits and vegetables)
-that result from growing, you may want to join this table to `crops_object_information`
+that result from growing, you may want to join this table to `object_information`
 on `index_of_harvest` = `object_id`.
 }
 \keyword{datasets}

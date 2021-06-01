@@ -11,6 +11,7 @@ animals <-
                          yes = "Pick up",
                          no = ifelse(test = harvest_type == 1,
                                      yes = "Grab",
-                                     no = "Not used")))
+                                     no = "Not used"))) %>%
+  dplyr::select(-english_display_type, -english_display_building)
 
 usethis::use_data(animals, overwrite = TRUE)

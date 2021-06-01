@@ -352,7 +352,7 @@
 #' A dataset containing information about seeds, crops, crop growing
 #' Stardew Valley. Much of this information concerns the growing of crops from
 #' seeds. If you want information about the crop (e.g. fruits and vegetables)
-#' that result from growing, you may want to join this table to `crops_object_information`
+#' that result from growing, you may want to join this table to `object_information`
 #' on `index_of_harvest` = `object_id`.
 #'
 #' @format A data frame with 42 rows and 22 variables:
@@ -361,7 +361,7 @@
 #'   seed's id, not the full-grown crop's id in other datasets. If you want to
 #'   join this crops table to the information about the resulting crop (e.g. fruit
 #'   or vegatable resulting from growing) then join on `crops$index_of_harvest` =
-#'   `crops_object_information$id`.}
+#'   `object_information$id`.}
 #'   \item{days_in_stage_1_growth}{days in first stage of growth}
 #'   \item{days_in_stage_2_growth}{days in second stage of growth}
 #'   \item{days_in_stage_3_growth}{days in third stage of growth, and if NA then
@@ -407,35 +407,6 @@
 #' from the game. Descriptions of the variables summarized from
 #' \url{https://stardewvalleywiki.com/Modding:Crop_data}
 "crops"
-
-#' Crops Object Information
-#'
-#' A dataset containing more detailed information about crops in Stardew Valley.
-#' If you want information about the seeds and growing patterns which produce
-#' these crops, you may way to join to the `crops` table on `object_id` =
-#' `index_of_harvest`.
-#'
-#' @format A data frame with 42 rows and 22 variables:
-#' \describe{
-#'   \item{objectid}{unique id of the crop, which joins to `crops` columns
-#'   `index_of_harvest`}
-#'   \item{name}{The name of the crop}
-#'   \item{price}{The sell price of the crop (note that this is sell price, not purchase price)}
-#'   \item{edibility}{Value used to determine health/energy regained by eating the item.
-#'   The energy gained is 2.5 x `edibility`, and the health gained is 1.125 x `edibility`.
-#'   Note that the amount of health shown in the tooltip is only 1 x `edibility` but
-#'   the actual amount gained is 1.125 x `edibility`.}
-#'   \item{type}{The object type}
-#'   \item{category}{The category of the crop}
-#'   \item{english_name}{The name of the object in English, and a duplicate of
-#'   `name` (may update in the future to include other language names)}
-#'   \item{description}{A description of the crop}
-#' }
-#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
-#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
-#' from the game. Descriptions of the variables summarized from
-#' \url{https://stardewvalleywiki.com/Modding:Object_data}
-"crops_object_information"
 
 #' Furniture
 #'
@@ -520,95 +491,6 @@
 #' from the game. Descriptions of the variables summarized from
 #' \url{https://stardewcommunitywiki.com/Modding:Hat_data}
 "locations"
-
-#' Rings
-#'
-#' A dataset containing information about rings in Stardew Valley. Rings,
-#' with the exception of the wedding ring, provide a player with buffs and
-#' special abilities.
-#'
-#' @format A data frame with 20 rows and 7 variables:
-#' \describe{
-#'   \item{object_id}{Object id of the ring}
-#'   \item{name}{Name of the ring}
-#'   \item{price}{Price of the ring}
-#'   \item{edibility}{Edibility typically represents a variable used to
-#'   calculated the number of health and energy points regained by eating
-#'   the item, but all rings are inedible}
-#'   \item{type}{Type of object (always Ring)}
-#'   \item{english_name}{The name of the object in English, and a duplicate of
-#'   `name` (may update in the future to include other language names)}
-#'   \item{description}{Description of the ring}
-#' }
-#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
-#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
-#' from the game. Descriptions of the variables summarized from
-#' \url{https://stardewcommunitywiki.com/Modding:Object_data}
-"rings"
-
-#' Geodes
-#'
-#' A dataset containing information about the geodes in Stardew Valley. Geodes
-#' can be broken open by the blacksmith and may reveal certain items inside,
-#' based upon their probabilities of appearing.
-#'
-#' @format A data frame with 4 rows and 7 variables:
-#' \describe{
-#'   \item{object_id}{Object id of the geode}
-#'   \item{name}{Name of the geode}
-#'   \item{price}{Price of the geode}
-#'   \item{edibility}{Edibility typically represents a variable used to
-#'   calculated the number of health and energy points regained by eating
-#'   the item, but all geodes are inedible}
-#'   \item{type}{Type of object (always Basic)}
-#'   \item{english_name}{The name of the object in English, and a duplicate of
-#'   `name` (may update in the future to include other language names)}
-#'   \item{description}{Description of the geode}
-#' }
-#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
-#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
-#' from the game. Descriptions of the variables summarized from
-#' \url{https://stardewcommunitywiki.com/Modding:Object_data}
-"geodes"
-
-#' Foods And Drinks
-#'
-#' A dataset containing information about foods and drinks in Stardew Valley.
-#' Foods and drinks can be purchased and crafted.
-#'
-#' @format A data frame with 103 rows and 21 variables:
-#' \describe{
-#'   \item{object_id}{Object id of the food or drink item}
-#'   \item{name}{Name of the food or drink item}
-#'   \item{price}{Price of the food or drink item}
-#'   \item{edibility}{Value used to determine health/energy regained by eating the item.
-#'   The energy gained is 2.5 x `edibility`, and the health gained is 1.125 x `edibility`.
-#'   Note that the amount of health shown in the tooltip is only 1 x `edibility` but
-#'   the actual amount gained is 1.125 x `edibility`.}
-#'   \item{category}{The category of the food or drink item}
-#'   \item{type}{Type of object food or drink item}
-#'   \item{english_name}{The name of the object in English, and a duplicate of
-#'   `name` (may update in the future to include other language names)}
-#'   \item{description}{Description of the food or drink item}
-#'   \item{food_or_drink}{Is the item food or drink?}
-#'   \item{buff_farming}{}
-#'   \item{buff_fishing}{}
-#'   \item{buff_mining}{}
-#'   \item{buff_digging_unimplemented}{}
-#'   \item{buff_luck}{}
-#'   \item{buff_foraging}{}
-#'   \item{buff_crafting}{}
-#'   \item{buff_max_energy}{}
-#'   \item{buff_magnetism}{}
-#'   \item{buff_speed}{}
-#'   \item{buff_defense}{}
-#'   \item{buff_duration}{}
-#' }
-#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
-#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
-#' from the game. Descriptions of the variables summarized from
-#' \url{https://stardewcommunitywiki.com/Modding:Object_data}
-"foods_and_drinks"
 
 #' Objects
 #'
