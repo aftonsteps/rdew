@@ -1,5 +1,5 @@
-Package: rstardew
-Title: R Stardew
+Package: rdew
+Title: rdew
 Version: 0.0.9
 Authors@R: 
     c(person(given = "Afton",
@@ -11,7 +11,7 @@ Authors@R:
              family = "Harris",
              role = "aut",
              email = "koderkow@gmail.com"))
-Description: Holds data related to the game Stardew Valley
+Description: Holds data and functions related to the game Stardew Valley
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
