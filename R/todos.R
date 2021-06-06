@@ -1,4 +1,11 @@
 ## TODO's
+## TODO find out where the game figured out which fish to show at night
+## TODO remove NA's from final col of complete NPC gift tastes
+## TODO move over functions from croptimizer (ingredient_splitter)
+## TODO where does data for the fishing game at the farm harvest festival come from?
+## TODO make sure all IDs are numeric
+## TODO add more info to crops
+## TODO pivot all ids long
 ## TODO add a convenience function for getting a characters' liked,
 ## loved, neutral, hated items? would cover selecting a character and joining
 ## TODO find a dataset that tells you which mine levels are which?

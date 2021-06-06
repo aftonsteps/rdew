@@ -13,7 +13,10 @@ complete_npc_gift_tastes <-
   make_cols_snake_case() %>%
   dplyr::mutate(id = rep(1)) %>%
   dplyr::full_join(npc_gift_tastes %>%
-                     dplyr::mutate(id = rep(1)),
+                     dplyr::mutate(neutral_items =
+                                     tidyr::replace_na(neutral_items,
+                                                       replace = ""),
+                                   id = rep(1)),
                    by = "id") %>%
   dplyr::mutate(loved_items = paste(loved_items, love),
                 liked_items = paste(liked_items, like),
