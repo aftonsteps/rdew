@@ -23,11 +23,25 @@ bundles <-
                    by = c("required_minimum_quality_num" = "value")) %>%
   dplyr::rename(required_minimum_quality = quality) %>%
   dplyr::left_join(objects %>%
-                     dplyr::select(object_id, reward_object = name),
+                     dplyr::select(object_id, reward_object = name) %>%
+                     dplyr::full_join(crafting_recipes %>%
+                                        dplyr::select(yield_object_id,
+                                                      reward_object = name),
+                                      by = c("object_id" =
+                                               "yield_object_id",
+                                             "reward_object" =
+                                               "reward_object")),
                    by = c("reward_object_id" = "object_id")) %>%
   dplyr::left_join(objects %>%
                      dplyr::select(object_id, required_object = name),
                    by = c("required_object_id" = "object_id")) %>%
+  dplyr::mutate(reward_object = ifelse(test = bundle_name == "The Missing",
+                                       yes = "Movie Theater",
+                                       no = reward_object),
+                number_of_reward_object_given =
+                  ifelse(test = bundle_name == "The Missing",
+                         yes = 1,
+                         no = number_of_reward_object_given)) %>%
   dplyr::relocate(reward_object, .after = reward_object_id) %>%
   dplyr::relocate(required_object_is_gold,
                   .after = required_object_id) %>%
