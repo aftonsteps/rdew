@@ -23,12 +23,12 @@ loadfonts(quiet = TRUE)
 ```
 
 ```{r setup}
-library(rstardew)
+library(rdew)
 library(ggplot2)
 ```
 
 ## Introduction
-`rstardew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
+`rdew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
 is an example analysis using the trapped fish dataset, meant to demonstrate an exploratory data analysis using this package.
 
 ## Trapped Fish
@@ -64,8 +64,8 @@ ggplot(long_fish,
        aes(x = name, y = size_value)) +
   geom_line(color = "turquoise4") +
   labs(title = "Trapped Fish Sizes", x = "Name", y = "Min to Max Size") +
-  theme_classic() +
-  styling
+  theme_classic() #+
+  # styling
 ```
 
 We could also color-code the fish by the location type (freshwater or saltwater). It looks like most trapped fish are saltwater, not freshwater, and that crabs and lobsters have the largest size range.
@@ -78,11 +78,10 @@ ggplot(long_fish,
                                 "ocean" = "navy")) +
   labs(title = "Trapped Fish Sizes", x = "Name", y = "Min to Max Size") +
   theme_classic() +
-  styling +
+  # styling +
   theme(legend.position = "bottom",
-        legend.text = element_text(family = "Hello Sailor", size = 12),
+        # legend.text = element_text(family = "Hello Sailor", size = 12),
         legend.title = element_text(size = 14))
-
 ```
 
 ^1^ The font used in these charts is Hello Sailor by Out Of Step Font Company,

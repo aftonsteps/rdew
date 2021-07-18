@@ -32,7 +32,7 @@ calc_seed_prices <- function(all_joja_cols = TRUE, joja_member = FALSE) {
   }
 
   prices <-
-    rstardew::seeds_object_information %>%
+    rdew::seeds_object_information %>%
     dplyr::mutate(purchased_price_pierre = 2 * sell_price) %>%
     dplyr::mutate(purchased_price_joja_with_membership =
                     purchased_price_pierre,

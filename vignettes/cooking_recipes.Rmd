@@ -4,7 +4,7 @@ author: "Afton Coombs"
 date: "5/21/2021"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Example Analysis: Trapped Fish Data}
+  %\VignetteIndexEntry{Cooking Recipes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,8 +13,12 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(rdew)
+```
+
 ## Introduction
-`rstardew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
+`rdew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
 is an example analysis using the cooking recipes dataset as well as the 
 objects dataset, mean to demonstrate how to join a dataset to the objects
 dataset to get info about objects that are dependencies.
@@ -29,40 +33,20 @@ tibble::glimpse(cooking_recipes)
 As we can see, `ingredients` has space-delimited integer values. Each of these space-delimited elements is the object id of an ingredient. How do we get more information about these items, such as the actual name of the item? By joining to the `objects` dataset!
 
 ## Joining to Objects
-First, we'll need pivot the `ingredient` column longer, so that we have one row per required ingredient id. This will allow joining to the object id's in the `objects` dataset.
-
-The ingredients are space-delimited sets of pairs, where the first element of each pair is the object id of the required item, and the second element of each pair is the quantity required of that item. We'll need to split those cells on the space, which is the delimiter, and then pivot longer to have one row per element. Then, the odd rows are the item id's and the even rows are the quantities, so we'll mutate based on the row number, and then finally pivot that wider to have one row per required item, along with the required quantity.
-
-```{r pivoting-recipes-longer}
-cooking_recipes_long <-
-  cooking_recipes %>%
-  dplyr::mutate( ingredients =
-                   stringr::str_split(ingredients, " ") ) %>%
-  tidyr::unnest(ingredients) %>%
-  dplyr::mutate(row_number = (dplyr::row_number()+1) %/% 2,
-                type =
-                  dplyr::case_when(dplyr::row_number()%%2 == 0 ~
-                                     "ingredient_qty",
-                                   TRUE ~ "ingredient_id")) %>%
-  tidyr::pivot_wider(names_from = type, 
-                     values_from = ingredients) %>%
-  dplyr::mutate(ingredient_id = as.numeric(ingredient_id))
-```
-
-Let's take a look. We can see that now there are multiple rows per item name and yield_object_id (the id associated with that name), but there is one row per required item. This will let us join to the object id's!
+We will be joining to the object id's in the `objects` dataset.
 
 ```{r head-of-long-recipes}
-head(cooking_recipes_long)
+head(cooking_recipes)
 ```
 
-When we join the (now long-formatted) `cooking_recipes` dataset to the `objects` dataset, they should join on the columns `ingredient_id` and `object_id`, respectively. We'll use a left join because the objects dataset contains many 
+When we join the `cooking_recipes` dataset to the `objects` dataset, they should join on the columns `ingredient_id` and `object_id`, respectively. We'll use a left join because the objects dataset contains many ingredients.
 
 There are some columns in here that aren't necessary, such as the 
 `geode_possible_items`, since geodes aren't ingredients to cooking recipes. Those columns will have NA's for all rows.
 
 ```{r join-to-objects}
 cooking_recipes_and_ingreds <-
-  cooking_recipes_long %>%
+  cooking_recipes %>%
   dplyr::left_join(objects, 
                    by = c("ingredient_id" = "object_id"),
                    suffix = c("_yield", "_ingredient"))
@@ -79,7 +63,7 @@ just_names <-
   dplyr::select(name_yield, 
                 name_ingredient, 
                 ingredient_id, 
-                ingredient_qty)
+                ingredient_quantity)
 
 head(just_names)
 ```
