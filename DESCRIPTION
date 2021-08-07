@@ -13,16 +13,23 @@ Authors@R:
              email = "koderkow@gmail.com"))
 Description: Holds data and functions related to the game Stardew Valley
 License: GPL-3
-Encoding: UTF-8
-LazyData: true
-Suggests: 
-    testthat (>= 2.1.0),
-    dplyr,
-    knitr,
-    rmarkdown
-RoxygenNote: 7.1.1
-Imports: 
-    magrittr
 Depends: 
     R (>= 2.10)
-VignetteBuilder: knitr
+Imports: 
+    dplyr,
+    magrittr,
+    purrr,
+    stringr,
+    tibble,
+    tidyr
+Suggests: 
+    extrafont,
+    ggplot2,
+    knitr,
+    rmarkdown,
+    testthat (>= 2.1.0)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1

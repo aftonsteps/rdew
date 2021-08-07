@@ -1,5 +1,6 @@
-^rstardew\.Rproj$
+^rdew\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^doc$
 ^Meta$
+^data-raw$

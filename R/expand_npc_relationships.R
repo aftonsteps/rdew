@@ -5,7 +5,7 @@ expand_npc_relationships <- function() {
       ## odd elements to a colnames vector
       ## even elements to a value vector
   ## Populate data.frame with values
-  raw_rels <- rstardew::npc_dispositions$relationships
+  raw_rels <- rdew::npc_dispositions$relationships
   parsed_rels <- stringr::str_split(string = raw_rels,
                                     pattern = " ")
 

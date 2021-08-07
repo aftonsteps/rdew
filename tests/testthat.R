@@ -1,4 +1,4 @@
 library(testthat)
-library(rstardew)
+library(rdew)
 
-test_check("rstardew")
+test_check("rdew")

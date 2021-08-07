@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rstardew
+# rdew
 
 <!-- badges: start -->
 
@@ -9,7 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-The goal of `rstardew` is to provide data and simple functions related
+The goal of `rdew` is to provide data and simple functions related
 to the video game Stardew Valley.
 
 In its final form, this package should contain tabular versions of all
@@ -36,5 +36,5 @@ This package is currently available only from this repo. Install using
 `install_github()`-like function).
 
 ``` r
-devtools::install_github("https://github.com/aftonsteps/rstardew")
+devtools::install_github("https://github.com/aftonsteps/rdew")
 ```
