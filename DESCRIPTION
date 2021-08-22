@@ -23,6 +23,7 @@ Imports:
     tibble,
     tidyr
 Suggests: 
+    vroom,
     extrafont,
     ggplot2,
     knitr,

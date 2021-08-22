@@ -1,0 +1,70 @@
+---
+title: "Buildings"
+author: "Afton Coombs"
+date: "5/21/2021"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example Analysis: Trapped Fish Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+`rdew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This is an example analysis using the buildings dataset as well as the objects dataset, mean to demonstrate how to join a dataset to the objects dataset to get info about objects that are dependencies.
+
+## Building Blueprints
+The building blueprints dataset contains information about how to build buildings from Robin's workshop. Usually you will need to bring ingredients such as wood or stone to Robin in orde for her to build. 
+Let's take a look.
+
+```{r glimpse-of-cooking-recipes}
+tibble::glimpse(building_blueprints)
+```
+
+As we can see, `building_bluprints` has columns for `required_object_id` and `required_quantity` which tell us which object to bring and how many of them. However, it would be useful to get human-readable names for the objects, not just the ID's.
+
+## Joining to Objects
+First, we'll need to join the `building_blueprints` to the `objects` dataset. For readability, let's add "req_object" to 
+the end of each column name for the required objects, to make it
+clear which columns refer to the buildings and which refer to the
+required objects.
+
+```{r join-to-obs}
+buildings <-
+  building_blueprints %>%
+  dplyr::left_join(objects %>%
+                     dplyr::rename_with(.fn = ~paste0(.x, "_req_object")), 
+                   by = c("required_object_id" = "object_id_req_object"))
+
+tibble::glimpse(buildings)
+```
+
+From this, we can get the ingredients that are required for a specific building. For example, if want to look at the silo, we can see the ingredient it requires, how many, and how much they cost if we choose to buy them instead of finding them. We can also see that the silo costs
+100 gold (not 300 gold, as the sum of this column!). The cost is duplicated
+across the rows so that we can have one ingredient per row.
+
+```{r silo}
+buildings %>% 
+  dplyr::filter(name == "Silo") %>%
+  dplyr::select(name, 
+                price,
+                required_object_id, 
+                required_quantity, 
+                name_req_object, 
+                price_req_object)
+```
+
+There are a few buildings that have missingness for the ingredienct, either because they are simply purchased or because  they are unlocked with in-game achievements.
+```{r missing-ing}
+buildings %>% 
+  dplyr::filter(is.na(name_req_object)) %>%
+  dplyr::select(name, 
+                price,
+                required_object_id, 
+                required_quantity, 
+                name_req_object, 
+                price_req_object)
+```

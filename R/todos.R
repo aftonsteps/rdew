@@ -1,4 +1,7 @@
 ## TODO's
+## TODO the price column is actually sell price. add a function
+## for getting the purchase price
+## TODO columns are out of order in big craftables (last two)
 ## TODO find out where the game figured out which fish to show at night
 ## TODO remove NA's from final col of complete NPC gift tastes
 ## TODO move over functions from croptimizer (ingredient_splitter)
@@ -10,8 +13,6 @@
 ## loved, neutral, hated items? would cover selecting a character and joining
 ## TODO find a dataset that tells you which mine levels are which?
 ## TODO add categories
-## TODO look into list cols/nesting for relationships and for unlock conditions
-## for the recipes
 ## TODO consider joining crops and seeds object info to crops to make
 ## one crops dataset, so the user doesn't have to deal with it
 ## TODO add a convenience dataset for mapping these categories to

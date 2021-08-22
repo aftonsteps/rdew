@@ -11,7 +11,12 @@ animals <-
                          yes = "Pick up",
                          no = ifelse(test = harvest_type == 1,
                                      yes = "Grab",
-                                     no = "Not used"))) %>%
+                                     no = "Not used")),
+                harvest_tool =
+                  ifelse(test = harvest_tool == "null",
+                         yes = NA,
+                         no = harvest_tool)) %>%
   dplyr::select(-english_display_type, -english_display_building)
 
 usethis::use_data(animals, overwrite = TRUE)
+
