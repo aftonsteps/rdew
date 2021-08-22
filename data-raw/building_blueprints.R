@@ -1,5 +1,4 @@
 ## Loads building blueprints
-
 building_blueprints <-
   readr::read_csv("data-raw/files/Building Blueprints.csv") %>%
   make_cols_snake_case() %>%
@@ -18,8 +17,23 @@ building_blueprints <-
                 price =
                   convert_to_na(x = price,
                                 value = -1)) %>%
-  dplyr::mutate(magical = ifelse(test = is.na(magical),
-                                    yes = FALSE,
-                                    no = magical))
+  dplyr::mutate(magical =
+                  ifelse(test = is.na(magical),
+                         yes = FALSE,
+                         no = magical),
+                unnest_me =
+                  purrr::map(.x = items_required,
+                             .f = column_splitter,
+                             column_names = c("required_object_id", "required_quantity")
+                  )) %>%
+  tidyr::unnest(unnest_me) %>%
+  dplyr::relocate(required_object_id,
+                  required_quantity,
+                  .after = items_required) %>%
+  dplyr::select(-items_required) %>%
+  dplyr::mutate(
+    dplyr::across(
+      dplyr::starts_with("required_"),
+      as.numeric))
 
 usethis::use_data(building_blueprints, overwrite = TRUE)

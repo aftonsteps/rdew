@@ -16,16 +16,29 @@ crafting_recipes <-
                   ifelse(test = big_craftable == "true",
                          yes = TRUE,
                          no = FALSE),
-                num_yield_object = ifelse(test = is.na(num_yield_object),
-                                          yes = 1,
-                                          no = num_yield_object),
-                yield_object_id = as.numeric(yield_object_id)) %>%
+                num_yield_object =
+                  ifelse(test = is.na(num_yield_object),
+                         yes = 1,
+                         no = num_yield_object),
+                yield_object_id =
+                  as.numeric(yield_object_id),
+                unnest_me =
+                  purrr::map(
+                    .x = ingredients,
+                    .f = column_splitter,
+                    column_names = c("required_object_id", "required_quantity"))) %>%
+  tidyr::unnest(unnest_me) %>%
   dplyr::select(name,
-                ingredients,
+                required_object_id,
+                required_quantity,
                 yield_object_id,
                 num_yield_object,
                 big_craftable,
                 ring,
-                unlock_conditions)
+                unlock_conditions) %>%
+  dplyr::mutate(
+    dplyr::across(
+      dplyr::starts_with("required_"),
+      as.numeric))
 
 usethis::use_data(crafting_recipes, overwrite = TRUE)

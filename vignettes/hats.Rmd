@@ -15,11 +15,11 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(rstardew)
+library(rdew)
 ```
 
 ## Introduction
-`rstardew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
+`rdew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
 is an example analysis using the hats and achievements datasets, meant to demonstrate what you can do with this package.
 
 ## Hats
@@ -41,7 +41,7 @@ there are even more hats that are just not earned with an achievement.
 
 ```{r join-achievements-and-hats}
 achievements_and_hats <-
-  rstardew::achievements %>%
+  rdew::achievements %>%
   dplyr::left_join(hats, 
                    by = c("hat_earned" = "object_id"), 
                    suffix = c("_achievement", "_hat"))

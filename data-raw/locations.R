@@ -20,6 +20,29 @@ locations <-
                 winter_fishing =
                   convert_to_na(x = winter_fishing, value = -1),
                 artifact_data =
-                  convert_to_na(x = artifact_data, value = -1))
+                  convert_to_na(x = artifact_data, value = -1)) %>%
+  tidyr::pivot_longer(cols = spring_foraging:artifact_data,
+                      names_to = "split_name",
+                      values_to = "split_value") %>%
+  dplyr::mutate(unnest_me =
+                  purrr::map(
+                    .x = split_value,
+                    .f = column_splitter,
+                    column_names = c("object_id", "probability")
+                  )) %>%
+  tidyr::unnest(unnest_me) %>%
+  tidyr::separate(col = split_name,
+                  into = c("season", "type"),
+                  sep = "_") %>%
+  dplyr::relocate(object_id,
+                  probability,
+                  .after = type) %>%
+  dplyr::select(-split_value) %>%
+  ## There are NA objects from the pivot, remove them
+  tidyr::drop_na(object_id) %>%
+  dplyr::mutate(
+    dplyr::across(
+      c(object_id, probability),
+      as.numeric))
 
 usethis::use_data(locations, overwrite = TRUE)
