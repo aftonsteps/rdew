@@ -34,21 +34,7 @@ objects <-
                            "buff_magnetism",
                            "buff_speed",
                            "buff_defense",
-                           "buff_attack"))
+                           "buff_attack")) %>%
+  dplyr::rename(sell_price = price)
 
 usethis::use_data(objects, overwrite = TRUE)
-
-
-# x <-
-#   tibble::tibble(name = c("Ice Cream", "Stir Fry"),
-#          ingredients = c("-6 1 245 1", "78 1 404 1 250 3 247 1"),
-#          yield_object_id = c(233, 606),
-#          unlock_conditions = c("f Jodi 7", "l 100")) %>%
-#   dplyr::mutate( ingredients =
-#                    stringr::str_split(ingredients, " ") ) %>%
-#   tidyr::unnest(ingredients) %>%
-#   dplyr::mutate(row_number = (dplyr::row_number()+1) %/% 2,
-#                 type =
-#                   dplyr::case_when(dplyr::row_number()%%2 == 0 ~ "ingredient_qty",
-#                                    TRUE ~ "ingredient_id")) %>%
-#   tidyr::pivot_wider(names_from = type, values_from = ingredients)

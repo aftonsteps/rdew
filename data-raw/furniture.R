@@ -59,6 +59,7 @@ furniture <-
                   ifelse(test = is.na(bounding_box_height) ||
                            bounding_box_height == -1,
                          yes = default_bounding_box_height,
-                         no = bounding_box_height))
+                         no = bounding_box_height)) %>%
+  dplyr::rename(purchase_price = price)
 
 usethis::use_data(furniture, overwrite = TRUE)
