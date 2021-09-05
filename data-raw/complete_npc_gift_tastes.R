@@ -52,7 +52,8 @@ complete_npc_gift_tastes <-
                 dialogue,
                 item_type,
                 object_id,
-                is_universal_gift)
+                is_universal_gift) %>%
+  dplyr::arrange(name, item_type, object_id)
 
 usethis::use_data(complete_npc_gift_tastes, overwrite = TRUE)
 

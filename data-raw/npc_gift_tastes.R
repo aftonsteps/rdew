@@ -23,6 +23,15 @@ npc_gift_tastes <-
   dplyr::select(-item,
                 -dplyr::ends_with("_match")) %>%
   dplyr::mutate(object_id =
-                  as.numeric(object_id))
+                  as.numeric(object_id)) %>%
+  dplyr::mutate(item_type = factor(item_type,
+                                   levels = c("loved_items",
+                                              "liked_items",
+                                              "neutral_items",
+                                              "disliked_items",
+                                              "hated_items"))) %>%
+  dplyr::arrange(name, desc(item_type)) %>%
+  dplyr::distinct(name, object_id, .keep_all = TRUE) %>%
+  dplyr::arrange(name, item_type, object_id)
 
 usethis::use_data(npc_gift_tastes, overwrite = TRUE)
