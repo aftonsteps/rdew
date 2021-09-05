@@ -1,0 +1,42 @@
+---
+title: "Gift Tastes"
+author: "Afton Coombs"
+date: "8/29/2021"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cooking Recipes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(rdew)
+```
+
+## Introduction
+`rdew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
+is an example analysis using the NPC gift tastes dataset as well as the 
+objects dataset, mean to demonstrate how to join a dataset to the objects
+dataset to get info about what NPC's like or dislike. A related demonstration of joining a non-object dataset to an object dataset can be found in the Cooking Recipes vignette.
+
+## NPC Gift Tastes
+`npc_gift_tastes` contains data about gifts you can give to NPC's, and whether the NPC likes or dislikes that gift. This includes the `name` of the character, the `dialogue_type` (liked, loved, etc.), the `dialogue` the character will say upon receiving the gift, the `item_type` (liked, loved, etc.) and the `object_id`. Characters can like, love, hate, or feel neutral about an object. Let's take a look!
+
+```{r glimpse-of-npc_gift_tastes}
+tibble::glimpse(npc_gift_tastes)
+```
+
+There also exists a set of "universal gift tastes", which apply to all NPC's, and are found in `universal_gift_tastes`.
+
+```{r glimpse-of-universal_gift_tastes}
+tibble::glimpse(universal_gift_tastes)
+```
+Fortunately, there is a dataset `complete_npc_gift_tastes` which already combines these.
+
+```{r glimpse-of-complete_npc_gift_tastes}
+tibble::glimpse(complete_npc_gift_tastes)
+```
