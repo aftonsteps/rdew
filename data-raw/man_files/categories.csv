@@ -1,0 +1,34 @@
+﻿objectId,category_value,category_name
+-2,Object.GemCategory,Mineral
+-4,Object.FishCategory,Fish
+-5,Object.EggCategory,Animal Product
+-6,Object.MilkCategory,Animal Product
+-7,Object.CookingCategory,Cooking
+-8,Object.CraftingCategory,Crafting
+-9,Object.BigCraftableCategory,
+-12,Object.mineralsCategory,Mineral
+-14,Object.meatCategory,Animal Product
+-15,Object.metalResources,Resource
+-16,Object.buildingResources,Resource
+-17,Object.sellAtPierres,
+-18,Object.sellAtPierresAndMarnies,Animal Product
+-19,Object.fertilizerCategory,Fertilizer
+-20,Object.junkCategory,Trash
+-21,Object.baitCategory,Bait
+-22,Object.tackleCategory,Fishing Tackle
+-23,sellAtFishShopCategory,
+-24,Object.furnitureCategory,Decor
+-25,Object.ingredientsCategory,Cooking
+-26,Object.artisanGoodsCategory,Artisan Goods
+-27,Object.syrupCategory,Artisan Goods
+-28,Object.monsterLootCategory,Monster Loot
+-29,Object.equipmentCategory,
+-74,Object.SeedsCategory,Seed
+-75,Object.VegetableCategory,Vegetable
+-79,Object.FruitsCategory,Fruit
+-80,Object.flowersCategory,Flower
+-81,Object.GreensCategory,Forage
+-95,Object.hatCategory,
+-96,Object.ringCategory,
+-98,Object.weaponCategory,
+-99,Object.toolCategory,
