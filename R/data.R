@@ -221,6 +221,23 @@
 #' Descriptions of the variables summarized from \url{https://stardewvalleywiki.com/Modding:Bundles}
 "bundles"
 
+#' Categories
+#'
+#' A dataset the category object ID's and names. Categories always have a negative
+#' object id, and this dataset can be useful for determining what a category means --
+#' for example, when joined to `objects`.
+#'
+#' @format A data frame with 33 rows and 4 variables:
+#' \describe{
+#'   \item{object_id}{the numberic id, always negative}
+#'   \item{category_value}{the category value of the object in the game code as
+#'   returned by `item.Category`, which is useful for modding the game}
+#'   \item{game_name}{the name of the object in the game code, as returned by `item.getCategoryName()` (note that some are NA)}
+#'   \item{category_name}{the name of the object, as in `game_name` but with NA's replaced}
+#' }
+#' @source  \url{https://stardewvalleywiki.com/Modding:Object_data}
+"categories"
+
 #' Caught Fish
 #'
 #' A dataset containing information about fish that are caught with a fishing pole.
