@@ -286,17 +286,14 @@
 #'
 #' @format A data frame with 33 rows and 11 variables:
 #' \describe{
-#'   \item{character_name}{the NPC name}
-#'   \item{love_dialogue}{dialogue NPC uses when given a loved item}
-#'   \item{loved_items}{object ID's of the loved items}
-#'   \item{liked_dialogue}{dialogue NPC uses when given a liked item}
-#'   \item{liked_items}{object ID's of the liked items}
-#'   \item{dislike_dialogue}{dialogue NPC uses when given a disliked item}
-#'   \item{disliked_items}{object ID's of the disliked items}
-#'   \item{hate_dialogue}{dialogue NPC uses when given a hated item}
-#'   \item{hated_items}{object ID's of the hated items}
-#'   \item{neutral_dialogue}{dialogue NPC uses when given a neutral item}
-#'   \item{neutral_items}{object ID's of the neutral items}
+#'   \item{npc_name}{the NPC name}
+#'   \item{dialogue_type}{the type of dialogue (liked, loved, etc.)}
+#'   \item{dialogue}{the dialogue the npc will say when receiving the gift}
+#'   \item{item_type}{the item type (liked, loved, etc.)}
+#'   \item{object_id}{the unique id of the object, which can join to `objects`, where
+#'   negative values represent categories and not singular objects}
+#'   \item{object_name}{the name of the object, if it is an object}
+#'   \item{category_name}{the name of the category, if it is a category}
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
@@ -509,6 +506,30 @@
 #' \url{https://stardewcommunitywiki.com/Modding:Hat_data}
 "locations"
 
+#' NPC Gift Tastes
+#'
+#' A dataset containing NPC gift tastes that are specific to that NPC,
+#' not including universal tastes. For universal gift tastes, see
+#' `universal_gift_tastes`, and for the two sets pre-combined, see
+#' `complete_npc_gift_tastes`.
+#'
+#' @format A data frame with 738 rows and 7 variables:
+#' \describe{
+#'   \item{npc_name}{the NPC name}
+#'   \item{dialogue_type}{the type of dialogue (liked, loved, etc.)}
+#'   \item{dialogue}{the dialogue the npc will say when receiving the gift}
+#'   \item{item_type}{the item type (liked, loved, etc.)}
+#'   \item{object_id}{the unique id of the object, which can join to `objects`, where
+#'   negative values represent categories and not singular objects}
+#'   \item{object_name}{the name of the object, if it is an object}
+#'   \item{category_name}{the name of the category, if it is a category}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewvalleywiki.com/Modding:Gift_taste_data}
+"npc_gift_tastes"
+
 #' Objects
 #'
 #' A dataset containing information about various objects found in Stardew
@@ -536,3 +557,23 @@
 #' from the game. Descriptions of the variables summarized from
 #' \url{https://stardewcommunitywiki.com/Modding:Object_data}
 "objects"
+
+#' Universal Gift Tastes
+#'
+#' A dataset containing universal gift tastes, which apply for every NPC
+#' unless that NPC specifies in `npc_gift_tastes` a different preference for that
+#' item, which overrules `universal_gift_tastes`.
+#'
+#' @format A data frame with 88 rows and 4 variables:
+#' \describe{
+#'   \item{universal_type}{type of the object (e.g. liked or loved)}
+#'   \item{object_id}{the unique identifier of the object, which can be joined
+#'   to `objects`, where a negative value represents a category and not a singular object}
+#'   \item{object_name}{the name of the object if it is an object}
+#'   \item{category_name}{the name of the object if it is a category}
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewcommunitywiki.com/Modding:Gift_taste_data}
+"universal_gift_tastes"

@@ -17,6 +17,12 @@ universal_gift_tastes <-
   ) %>%
   dplyr::select(-items) %>%
   dplyr::mutate(object_id =
-                  as.numeric(object_id))
+                  as.numeric(object_id)) %>%
+  dplyr::left_join(objects %>% dplyr::select(object_id, name),
+                   by = "object_id",
+                   suffix = c("", "_object")) %>%
+  dplyr::rename("object_name" = "name") %>%
+  dplyr::left_join(categories %>% dplyr::select(object_id, category_name),
+                   by = "object_id")
 
 usethis::use_data(universal_gift_tastes, overwrite = TRUE)

@@ -53,7 +53,13 @@ complete_npc_gift_tastes <-
                 item_type,
                 object_id,
                 is_universal_gift) %>%
-  dplyr::arrange(name, item_type, object_id)
+  dplyr::arrange(name, item_type, object_id) %>%
+  dplyr::left_join(objects %>% dplyr::select(object_id, name),
+                   by = "object_id",
+                   suffix = c("_npc", "_object")) %>%
+  dplyr::rename(npc_name = name_npc, object_name = name_object) %>%
+  dplyr::left_join(categories %>% dplyr::select(object_id, category_name),
+                   by = "object_id")
 
 usethis::use_data(complete_npc_gift_tastes, overwrite = TRUE)
 

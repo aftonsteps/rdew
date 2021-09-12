@@ -32,6 +32,12 @@ npc_gift_tastes <-
                                               "hated_items"))) %>%
   dplyr::arrange(name, desc(item_type)) %>%
   dplyr::distinct(name, object_id, .keep_all = TRUE) %>%
-  dplyr::arrange(name, item_type, object_id)
+  dplyr::arrange(name, item_type, object_id) %>%
+  dplyr::left_join(objects %>% dplyr::select(object_id, name),
+                   by = "object_id",
+                   suffix = c("", "_object")) %>%
+  dplyr::rename("object_name" = "name_object") %>%
+  dplyr::left_join(categories %>% dplyr::select(object_id, category_name),
+                   by = "object_id")
 
 usethis::use_data(npc_gift_tastes, overwrite = TRUE)
