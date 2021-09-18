@@ -365,17 +365,18 @@
 #'
 #' A dataset containing information about seeds, crops, crop growing
 #' Stardew Valley. Much of this information concerns the growing of crops from
-#' seeds. If you want information about the crop (e.g. fruits and vegetables)
+#' seeds. If you want further information about the crop (e.g. fruits and vegetables)
 #' that result from growing, you may want to join this table to `object_information`
-#' on `index_of_harvest` = `object_id`.
+#' on `index_of_harvest` = `object_id`
 #'
 #' @format A data frame with 42 rows and 22 variables:
 #' \describe{
-#'   \item{objectid}{unique id of the object, but note that this joins to the
+#'   \item{seed_object_id}{unique id of the object, but note that this joins to the
 #'   seed's id, not the full-grown crop's id in other datasets. If you want to
 #'   join this crops table to the information about the resulting crop (e.g. fruit
-#'   or vegatable resulting from growing) then join on `crops$index_of_harvest` =
-#'   `object_information$id`.}
+#'   or vegatable resulting from growing) then join on `crops$object_id` =
+#'   `objects$crop_object_id`.}
+#'   \item{seed_name}{the name of the seed}
 #'   \item{days_in_stage_1_growth}{days in first stage of growth}
 #'   \item{days_in_stage_2_growth}{days in second stage of growth}
 #'   \item{days_in_stage_3_growth}{days in third stage of growth, and if NA then
@@ -415,6 +416,11 @@
 #'   certain flowers have various possible colors}
 #'   \item{tint_color_value}{if `tint_color` is true, then sets of rgb values for
 #'   each of the possible tints}
+#'   \item{crop_name}{the name of the resulting crop, after the seed has grown}
+#'   \item{crop_object_id}{the object id of the crop, which can be joined to `objects`
+#'   for further information}
+#'   \item{is_probabalistic}{TRUE if the crop is one of a set of randomly selected
+#'   possible crop for the seed (e.g. for spring seeds, summer seeds, etc.)}
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
