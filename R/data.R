@@ -512,6 +512,40 @@
 #' \url{https://stardewcommunitywiki.com/Modding:Hat_data}
 "locations"
 
+#' NPC Dispositions
+#'
+#' A dataset containing NPC dispositions and relationships.
+#'
+#' @format A data frame with 59 rows and 15 variables:
+#' \describe{
+#'   \item{npc_name}{the NPC name}
+#'   \item{age}{the NPC age}
+#'   \item{manners}{how polite the NPC is}
+#'   \item{sociability}{the level of outgoing-ness of the NPC}
+#'   \item{optimism}{how optimistic the NPC is}
+#'   \item{gender}{the NPC's gender}
+#'   \item{datable}{can you date the NPC?}
+#'   \item{love_interest}{the NPC's love interest, if any}
+#'   \item{home_region}{where the NPC is from, in Stardew Valley}
+#'   \item{birthday}{the NPC's birthday}
+#'   \item{start_location}{where the NPC starts their day}
+#'   \item{start_location_coord_x}{the start tile x coordinate within the building
+#'   where the NPC starts their day}
+#'   \item{start_location_coord_y}{the start tile y coordinate within the building
+#'   where the NPC starts their day}
+#'   \item{other_npc_name}{names of other NPC's that this NPC has a relationship
+#'   with, if any}
+#'   \item{relationship}{the relationship that this NPC has with the other NPC,
+#'   where NA's indicate that no relationship was listed (although one might
+#'   be assumed by the player)}
+#'
+#' }
+#' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
+#' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
+#' from the game. Descriptions of the variables summarized from
+#' \url{https://stardewvalleywiki.com/Modding:Gift_taste_data}
+"npc_gift_tastes"
+
 #' NPC Gift Tastes
 #'
 #' A dataset containing NPC gift tastes that are specific to that NPC,
