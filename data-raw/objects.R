@@ -1,4 +1,6 @@
 ## Loads Objects dataset
+prob_crop <-
+  c("Winter Seeds", "Spring Seeds", "Summer Seeds", "Fall Seeds")
 
 objects <-
   readr::read_csv("data-raw/files/Objects.csv") %>%
@@ -35,6 +37,11 @@ objects <-
                            "buff_speed",
                            "buff_defense",
                            "buff_attack")) %>%
-  dplyr::rename(sell_price = price)
+  dplyr::rename(sell_price = price,
+                category_id = category) %>%
+  dplyr::left_join(categories %>%
+                     dplyr::select(category_id, category_name),
+                   by = "category_id") %>%
+  dplyr::relocate(category_name, .after = category_id)
 
 usethis::use_data(objects, overwrite = TRUE)

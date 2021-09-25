@@ -7,7 +7,7 @@
 \format{
 A data frame with 33 rows and 4 variables:
 \describe{
-  \item{object_id}{the numberic id, always negative}
+  \item{category_id}{the numberic id, always negative}
   \item{category_value}{the category value of the object in the game code as
   returned by `item.Category`, which is useful for modding the game}
   \item{game_name}{the name of the object in the game code, as returned by `item.getCategoryName()` (note that some are NA)}

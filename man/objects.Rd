@@ -14,7 +14,8 @@ A data frame with 702 rows and 8 variables:
   The energy gained is 2.5 x `edibility`, and the health gained is 1.125 x `edibility`.
   Note that the amount of health shown in the tooltip is only 1 x `edibility` but
   the actual amount gained is 1.125 x `edibility`.}
-  \item{category}{The category of the object}
+  \item{category_id}{The category id of the object}
+  \item{category_name}{The readable name of the category}
   \item{type}{Type of object object}
   \item{english_name}{The name of the object in English, and a duplicate of
   `name` (may update in the future to include other language names)}

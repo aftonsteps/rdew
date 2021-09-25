@@ -22,7 +22,7 @@ na_replacements <-
 categories <-
   readr::read_csv("data-raw/man_files/categories.csv") %>%
   make_cols_snake_case() %>%
-  dplyr::rename(object_id = objectid,
+  dplyr::rename(category_id = objectid,
                 game_name = category_name) %>%
   dplyr::left_join(na_replacements, by = "category_value") %>%
   dplyr::mutate(category_name =

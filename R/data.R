@@ -229,7 +229,7 @@
 #'
 #' @format A data frame with 33 rows and 4 variables:
 #' \describe{
-#'   \item{object_id}{the numberic id, always negative}
+#'   \item{category_id}{the numberic id, always negative}
 #'   \item{category_value}{the category value of the object in the game code as
 #'   returned by `item.Category`, which is useful for modding the game}
 #'   \item{game_name}{the name of the object in the game code, as returned by `item.getCategoryName()` (note that some are NA)}
@@ -544,7 +544,7 @@
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
 #' from the game. Descriptions of the variables summarized from
 #' \url{https://stardewvalleywiki.com/Modding:Gift_taste_data}
-"npc_gift_tastes"
+"npc_dispositions"
 
 #' NPC Gift Tastes
 #'
@@ -559,9 +559,9 @@
 #'   \item{dialogue_type}{the type of dialogue (liked, loved, etc.)}
 #'   \item{dialogue}{the dialogue the npc will say when receiving the gift}
 #'   \item{item_type}{the item type (liked, loved, etc.)}
-#'   \item{object_id}{the unique id of the object, which can join to `objects`, where
-#'   negative values represent categories and not singular objects}
+#'   \item{object_id}{the unique id of the object, which can join to `objects`}
 #'   \item{object_name}{the name of the object, if it is an object}
+#'   \item{category_id}{the unique id of the category, which can join to `objects`}
 #'   \item{category_name}{the name of the category, if it is a category}
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
@@ -586,7 +586,8 @@
 #'   The energy gained is 2.5 x `edibility`, and the health gained is 1.125 x `edibility`.
 #'   Note that the amount of health shown in the tooltip is only 1 x `edibility` but
 #'   the actual amount gained is 1.125 x `edibility`.}
-#'   \item{category}{The category of the object}
+#'   \item{category_id}{The category id of the object}
+#'   \item{category_name}{The readable name of the category}
 #'   \item{type}{Type of object object}
 #'   \item{english_name}{The name of the object in English, and a duplicate of
 #'   `name` (may update in the future to include other language names)}
