@@ -18,25 +18,55 @@ library(rdew)
 ```
 
 ## Introduction
-`rdew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This
-is an example analysis using the NPC gift tastes dataset as well as the 
-objects dataset, mean to demonstrate how to join a dataset to the objects
-dataset to get info about what NPC's like or dislike. A related demonstration of joining a non-object dataset to an object dataset can be found in the Cooking Recipes vignette.
+`rdew` provides data about a number of aspects of the game, such as animals, crops, hats, quests, NPC's, locations, monsters, and more. This is an example analysis using the NPC gift tastes dataset as well as the objects dataset, mean to demonstrate how to join a dataset to the objects dataset to get info about what NPC's like or dislike. A related demonstration of joining a non-object dataset to an object dataset can be found in the Cooking Recipes vignette.
 
 ## NPC Gift Tastes
-`npc_gift_tastes` contains data about gifts you can give to NPC's, and whether the NPC likes or dislikes that gift. This includes the `name` of the character, the `dialogue_type` (liked, loved, etc.), the `dialogue` the character will say upon receiving the gift, the `item_type` (liked, loved, etc.) and the `object_id`. Characters can like, love, hate, or feel neutral about an object. Let's take a look!
+`npc_gift_tastes` contains data about gifts you can give to NPC's, and whether the NPC likes or dislikes that gift. This includes the `name` of the character, the `dialogue_type` (liked, loved, etc.), the `dialogue` the character will say upon receiving the gift, the `item_type` (liked, loved, etc.), the `object_id` representing the unique numeric id of the object (or category), the `object_name` and the `category_name`. The `object_name` and `category_name` have mutually exclusive missingness, as the `object_name` is provided when the gift taste is for a specific object, whereas the `category_name` is provided when the gift taste is for a general category. Objects have non-negative `object_id` values and categories have negative `object_id` values. 
+
+Characters can like, love, hate, or feel neutral about an object. Giving an NPC an object they like or love will increase your relationship (heart values) with that character. Let's take a look!
 
 ```{r glimpse-of-npc_gift_tastes}
 tibble::glimpse(npc_gift_tastes)
 ```
 
-There also exists a set of "universal gift tastes", which apply to all NPC's, and are found in `universal_gift_tastes`.
+There also exists a set of "universal gift tastes", which apply to all NPC's (unless a gift taste is overruled by the specific tastes in `npc_gift_tastes`), and are found in `universal_gift_tastes`.
 
 ```{r glimpse-of-universal_gift_tastes}
 tibble::glimpse(universal_gift_tastes)
 ```
-Fortunately, there is a dataset `complete_npc_gift_tastes` which already combines these.
+It would be convenient to have the specific tastes in `npc_gift_tastes` and the universal tastes in `universal_gift_tastes` combined into one dataset. Fortunately, there is such a dataset! `complete_npc_gift_tastes` already combines these. You'll also find that it contains an additional column, `is_universal_gift`, which indicates if the gift taste came from the universal set or not.
 
 ```{r glimpse-of-complete_npc_gift_tastes}
 tibble::glimpse(complete_npc_gift_tastes)
+```
+
+Let's say you were interested in a specific NPC's 'like' and 'love' tastes. Let's take Abigail, for instance. You could get all of her gift tastes easily by filtering.
+
+```{r abigail-example}
+abigail_tastes <-
+  complete_npc_gift_tastes %>%
+  dplyr::filter(npc_name == "Abigail" & 
+                  item_type %in% c("liked_items", "loved_items")) %>%
+  dplyr::select(npc_name, 
+                item_type, 
+                object_id,
+                object_name, 
+                category_name)
+
+abigail_tastes
+```
+
+We can see that Abigail likes certain objects, like Diamonds and Coffee. She also likes certain categories of objects, like flowers 
+and minerals (again, though, these only apply so long as not overriden by other tastes).
+
+It might be useful to find out what objects are *in* those categories. We can get that by joining this dataset to `objects`.
+
+```{r abigail-join-example}
+abigail_tastes_cat <-
+  abigail_tastes %>%
+  dplyr::filter(!is.na(category_name)) %>%
+  dplyr::left_join(objects, 
+                   by = c("object_id" = "category"))
+
+abigail_tastes_cat
 ```

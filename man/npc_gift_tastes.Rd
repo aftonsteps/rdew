@@ -11,9 +11,9 @@ A data frame with 738 rows and 7 variables:
   \item{dialogue_type}{the type of dialogue (liked, loved, etc.)}
   \item{dialogue}{the dialogue the npc will say when receiving the gift}
   \item{item_type}{the item type (liked, loved, etc.)}
-  \item{object_id}{the unique id of the object, which can join to `objects`, where
-  negative values represent categories and not singular objects}
+  \item{object_id}{the unique id of the object, which can join to `objects`}
   \item{object_name}{the name of the object, if it is an object}
+  \item{category_id}{the unique id of the category, which can join to `objects`}
   \item{category_name}{the name of the category, if it is a category}
 }
 }
