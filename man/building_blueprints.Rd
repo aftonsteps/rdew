@@ -5,11 +5,14 @@
 \alias{building_blueprints}
 \title{Building Blueprints Data}
 \format{
-A data frame with 25 rows and 20 variables:
+A data frame with 51 rows and 21 variables:
 \describe{
-  \item{name}{the name of the building}
-  \item{items_required}{a space-delimited string containing the object
-  ids of the items required to construct the building, if any}
+  \item{building_name}{the name of the building}
+  \item{required_object_id}{the object id of the item required to build
+  the building}
+  \item{object_name}{the name of the object required to build the building}
+  \item{required_quantity}{the number of the object required for
+  making the building}
   \item{tiles_width}{width of the building in game tiles}
   \item{tiles_height}{height of the building in game tiles}
   \item{human_door_x_coord}{x-coordinate of the door that players enter
@@ -22,16 +25,14 @@ A data frame with 25 rows and 20 variables:
   through}
   \item{map_to_warp_to}{the map image the game uses for the interior of
   the building, if any}
-  \item{english_name}{the name of the object in English, and a duplicate of
-  `name` (may update in the future to include other language names)}
   \item{description}{a description of the building}
   \item{blueprint_type}{whether a building is an initial building or
   an upgraded version of a previous building}
   \item{name_of_building_to_upgrade}{if building type is 'upgrade', then the
   name of the building to upgrade}
-  \item{source_rectangle_for_menu_view_1}{x-coordinate of the menu view
+  \item{source_rectangle_for_menu_view_x_coord}{x-coordinate of the menu view
   rectangle}
-  \item{source_rectangle_for_menu_view_y}{y-coordinate of the menu view
+  \item{source_rectangle_for_menu_view_y_coord}{y-coordinate of the menu view
   rectangle}
   \item{max_occupants}{maximum number of occupants}
   \item{action_behavior}{action the building provides, if any}

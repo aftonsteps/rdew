@@ -8,7 +8,7 @@
 A data frame with 94 rows and 6 variables:
 \describe{
   \item{object_id}{Unique id of the hat}
-  \item{name}{The name of the hat}
+  \item{hat_name}{The name of the hat}
   \item{description}{Description of the hat}
   \item{skip_hair_draw}{If true, then the hat does not change the player's
   hairstyle, but if false, then it may}

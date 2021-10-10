@@ -42,6 +42,7 @@ objects <-
   dplyr::left_join(categories %>%
                      dplyr::select(category_id, category_name),
                    by = "category_id") %>%
-  dplyr::relocate(category_name, .after = category_id)
+  dplyr::relocate(category_name, .after = category_id) %>%
+  dplyr::rename(object_name = name)
 
 usethis::use_data(objects, overwrite = TRUE)

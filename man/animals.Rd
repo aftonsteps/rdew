@@ -5,9 +5,9 @@
 \alias{animals}
 \title{Animals Dataset}
 \format{
-A data frame with 15 rows and 27 variables:
+A data frame with 15 rows and 25 variables:
 \describe{
-  \item{name}{animal name}
+  \item{animal_name}{animal name}
   \item{days_to_produce}{days to produce item e.g. milk or egg}
   \item{age_when_mature}{days to achieve maturity}
   \item{default_produce_index}{object id of regular quality item produced}
@@ -31,10 +31,8 @@ A data frame with 15 rows and 27 variables:
   \item{sprite_size_side_height}{side-view height of the sprite}
   \item{fullness_drain}{rate of decay after feeding}
   \item{happiness_drain}{rate of decay after saying hello}
-  \item{meat_index}{object id of the meat if the animal is butchered}
+  \item{harvest_tool}{the tool required to harvest the animal product}
   \item{sell_price}{sell price of the meat if the animal is butchered}
-  \item{english_display_type}{English-language name for the animal}
-  \item{english_display_building}{English-langauge name for the building}
 }
 }
 \source{

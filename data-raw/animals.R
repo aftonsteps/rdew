@@ -16,7 +16,9 @@ animals <-
                   ifelse(test = harvest_tool == "null",
                          yes = NA,
                          no = harvest_tool)) %>%
-  dplyr::select(-english_display_type, -english_display_building)
+  dplyr::select(-english_display_type, -english_display_building,
+                -meat_index) %>%
+  dplyr::rename(animal_name = name)
 
 usethis::use_data(animals, overwrite = TRUE)
 

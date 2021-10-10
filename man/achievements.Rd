@@ -3,17 +3,23 @@
 \docType{data}
 \name{achievements}
 \alias{achievements}
-\title{Animals Dataset}
+\title{Achievements Dataset}
 \format{
 A data frame with 30 rows and 6 variables:
 \describe{
-  \item{id}{the achievement id}
-  \item{name}{the name of the achievement}
+  \item{id}{the achievement id (not an object id)}
+  \item{achievement_name}{the name of the achievement}
   \item{description}{a longer description of the achievement}
   \item{display_on_collections_tab_before_earned}{?}
   \item{prerequisite_achievement}{achievement that must be completed first}
-  \item{hat_earned}{the id of the hat earned by the achievement, which can
-  be joined to the column `object_id` in the `hats` dataset}
+  \item{hat_earned_object_id}{the id of the hat earned by the achievement, which can
+  be joined to the column `object_id` in the `hats` dataset (note that for
+  additional information, you should join to the `hats` dataset and
+  not the `objects` dataset)}
+  \item{hat_name}{the name of the hat earned, which comes from the
+  `hats` dataset (note that for
+  additional information, you should join to the `hats` dataset and
+  not the `objects` dataset)}
 }
 }
 \source{

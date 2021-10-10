@@ -13,6 +13,7 @@ hats <-
                                    yes = FALSE,
                                    no = ifelse(prismatic == "Prismatic",
                                                yes = TRUE,
-                                               no = prismatic)))
+                                               no = prismatic))) %>%
+  dplyr::rename(hat_name = name)
 
 usethis::use_data(hats, overwrite = TRUE)

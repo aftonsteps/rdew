@@ -34,6 +34,11 @@ building_blueprints <-
   dplyr::mutate(
     dplyr::across(
       dplyr::starts_with("required_"),
-      as.numeric))
+      as.numeric)) %>%
+  dplyr::left_join(objects %>% dplyr::select(object_id, object_name),
+                   by = c("required_object_id" = "object_id")) %>%
+  dplyr::relocate(object_name, .after = "required_object_id") %>%
+  dplyr::rename(building_name = name) %>%
+  dplyr::select(-english_name)
 
 usethis::use_data(building_blueprints, overwrite = TRUE)

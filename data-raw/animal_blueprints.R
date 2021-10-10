@@ -6,6 +6,9 @@ animal_blueprints <-
   dplyr::select(-null) %>%
   dplyr::mutate(is_farm = ifelse(test = is_farm == "Farm",
                                  yes = TRUE,
-                                 no = FALSE))
+                                 no = FALSE)) %>%
+  dplyr::select(-english_name) %>%
+  dplyr::rename(animal_name = name,
+                purchase_price = price)
 
 usethis::use_data(animal_blueprints, overwrite = TRUE)

@@ -1,4 +1,4 @@
-#' Animals Dataset
+#' Achievements Dataset
 #'
 #' A dataset containing information about achievements in Stardew Valley.
 #' Achievements are in-game events or tasks which, when completed, make a new
@@ -6,13 +6,19 @@
 #'
 #' @format A data frame with 30 rows and 6 variables:
 #' \describe{
-#'   \item{id}{the achievement id}
-#'   \item{name}{the name of the achievement}
+#'   \item{id}{the achievement id (not an object id)}
+#'   \item{achievement_name}{the name of the achievement}
 #'   \item{description}{a longer description of the achievement}
 #'   \item{display_on_collections_tab_before_earned}{?}
 #'   \item{prerequisite_achievement}{achievement that must be completed first}
-#'   \item{hat_earned}{the id of the hat earned by the achievement, which can
-#'   be joined to the column `object_id` in the `hats` dataset}
+#'   \item{hat_earned_object_id}{the id of the hat earned by the achievement, which can
+#'   be joined to the column `object_id` in the `hats` dataset (note that for
+#'   additional information, you should join to the `hats` dataset and
+#'   not the `objects` dataset)}
+#'   \item{hat_name}{the name of the hat earned, which comes from the
+#'   `hats` dataset (note that for
+#'   additional information, you should join to the `hats` dataset and
+#'   not the `objects` dataset)}
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
@@ -24,9 +30,9 @@
 #'
 #' A dataset containing information about animals in Stardew Valley.
 #'
-#' @format A data frame with 15 rows and 27 variables:
+#' @format A data frame with 15 rows and 25 variables:
 #' \describe{
-#'   \item{name}{animal name}
+#'   \item{animal_name}{animal name}
 #'   \item{days_to_produce}{days to produce item e.g. milk or egg}
 #'   \item{age_when_mature}{days to achieve maturity}
 #'   \item{default_produce_index}{object id of regular quality item produced}
@@ -50,10 +56,8 @@
 #'   \item{sprite_size_side_height}{side-view height of the sprite}
 #'   \item{fullness_drain}{rate of decay after feeding}
 #'   \item{happiness_drain}{rate of decay after saying hello}
-#'   \item{meat_index}{object id of the meat if the animal is butchered}
+#'   \item{harvest_tool}{the tool required to harvest the animal product}
 #'   \item{sell_price}{sell price of the meat if the animal is butchered}
-#'   \item{english_display_type}{English-language name for the animal}
-#'   \item{english_display_building}{English-langauge name for the building}
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
@@ -65,42 +69,19 @@
 #'
 #' A dataset containing "blueprints" for purchasing animals.
 #'
-#' @format A data frame with 7 rows and 9 variables:
+#' @format A data frame with 7 rows and 7 variables:
 #' \describe{
-#'   \item{name}{animal name}
+#'   \item{animal_name}{animal name}
 #'   \item{is_animal}{always 'animal', and only included here in case of future game
 #'   updates}
-#'   \item{price}{price to purchase the animal}
+#'   \item{purchase_price}{price to purchase the animal}
 #'   \item{source_rectangle_for_menu_view_x}{x-coordinate of the menu
 #'   rectangle}
 #'   \item{source_rectangle_for_menu_view_y}{y-coordinate of the menu
 #'   rectangle}
-#'   \item{english_name}{the name of the object in English, and a duplicate of
-#'   `name` (may update in the future to include other language names)}
 #'   \item{description}{description of the animal}
-#'   \item{null}{currently always null, and only included here in case of future
-#'   game updates}
 #'   \item{is_farm}{currently always 'Farm' and only included here in case of
 #'   future game updates}
-#'   \item{bounding_box_front_height}{height of front-view bounding box}
-#'   \item{bounding_box_side_x}{x coordinate of the side-view bounding box}
-#'   \item{bounding_box_side_y}{y coordinate of the side-view bounding box}
-#'   \item{bounding_box_side_width}{width of side-view bounding box}
-#'   \item{bounding_box_side_height}{height of side-view bounding box}
-#'   \item{harvest_type}{method of harvesting}
-#'   \item{change_texture_when_item_ready}{does the animal's coat change texture
-#'   when it is ready for harvest?}
-#'   \item{building_type}{type of building the animal lives in}
-#'   \item{sprite_size_front_width}{front-view width of the sprite}
-#'   \item{sprite_size_front_height}{front-view height of the sprite}
-#'   \item{sprite_size_side_width}{side-view width of the sprite}
-#'   \item{sprite_size_side_height}{side-view height of the sprite}
-#'   \item{fullness_drain}{rate of decay after feeding}
-#'   \item{happiness_drain}{rate of decay after saying hello}
-#'   \item{meat_index}{object id of the meat if the animal is butchered}
-#'   \item{sell_price}{sell price of the meat if the animal is butchered}
-#'   \item{english_display_type}{English-language name for the animal}
-#'   \item{english_display_building}{English-langauge name for the building}
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
@@ -115,16 +96,17 @@
 #' are instead stored in some type of Object Information dataset or in the
 #' Furniture dataset.
 #'
-#' @format A data frame with 147 rows and 11 variables:
+#' @format A data frame with 167 rows and 12 variables:
 #' \describe{
-#'   \item{objectid}{unique id of the object}
-#'   \item{name}{name of the item in English}
-#'   \item{price}{sale price of the item}
+#'   \item{object_id}{unique id of the object}
+#'   \item{object_name}{name of the item in English}
+#'   \item{sell_price}{sale price of the item}
 #'   \item{edibility}{health points from eating the item, limited in this
 #'   dataset to -300 which is a placeholder for inedible items}
 #'   \item{type}{type of item, limited to "Crafting" for this dataset}
-#'   \item{category}{category of the item, limited in this dataset to -9 which
+#'   \item{category_id}{category id of the item, limited in this dataset to -9 which
 #'   represents a "big craftable" category}
+#'   \item{category_name}{name of the category, always "Big Craftables"}
 #'   \item{description}{description of the item}
 #'   \item{can_be_set_outdoors}{boolean representing if the item can be set
 #'   outdoors}
@@ -132,8 +114,7 @@
 #'   indoors}
 #'   \item{fragility}{frability of the item in value between 0 and 2 (will
 #'   update with more information about what these values represent)}
-#'   \item{english_name}{the name of the object in English, and a duplicate of
-#'   `name` (may update in the future to include other language names)}
+#'   \item{lamp_type}{type of lamp, or NA if not lamp}
 #' }
 #' @source Data loaded from \url{https://github.com/aftonsteps/stardewdata} which
 #' in turn depends on \url{https://github.com/LeonBlade/xnbcli} for extracting the data
@@ -146,11 +127,14 @@
 #' A dataset containing information about blueprints for buildings you can
 #' purchase or construct.
 #'
-#' @format A data frame with 25 rows and 20 variables:
+#' @format A data frame with 51 rows and 21 variables:
 #' \describe{
-#'   \item{name}{the name of the building}
-#'   \item{items_required}{a space-delimited string containing the object
-#'   ids of the items required to construct the building, if any}
+#'   \item{building_name}{the name of the building}
+#'   \item{required_object_id}{the object id of the item required to build
+#'   the building}
+#'   \item{object_name}{the name of the object required to build the building}
+#'   \item{required_quantity}{the number of the object required for
+#'   making the building}
 #'   \item{tiles_width}{width of the building in game tiles}
 #'   \item{tiles_height}{height of the building in game tiles}
 #'   \item{human_door_x_coord}{x-coordinate of the door that players enter
@@ -163,16 +147,14 @@
 #'   through}
 #'   \item{map_to_warp_to}{the map image the game uses for the interior of
 #'   the building, if any}
-#'   \item{english_name}{the name of the object in English, and a duplicate of
-#'   `name` (may update in the future to include other language names)}
 #'   \item{description}{a description of the building}
 #'   \item{blueprint_type}{whether a building is an initial building or
 #'   an upgraded version of a previous building}
 #'   \item{name_of_building_to_upgrade}{if building type is 'upgrade', then the
 #'   name of the building to upgrade}
-#'   \item{source_rectangle_for_menu_view_1}{x-coordinate of the menu view
+#'   \item{source_rectangle_for_menu_view_x_coord}{x-coordinate of the menu view
 #'   rectangle}
-#'   \item{source_rectangle_for_menu_view_y}{y-coordinate of the menu view
+#'   \item{source_rectangle_for_menu_view_y_coord}{y-coordinate of the menu view
 #'   rectangle}
 #'   \item{max_occupants}{maximum number of occupants}
 #'   \item{action_behavior}{action the building provides, if any}
@@ -460,7 +442,7 @@
 #' @format A data frame with 94 rows and 6 variables:
 #' \describe{
 #'   \item{object_id}{Unique id of the hat}
-#'   \item{name}{The name of the hat}
+#'   \item{hat_name}{The name of the hat}
 #'   \item{description}{Description of the hat}
 #'   \item{skip_hair_draw}{If true, then the hat does not change the player's
 #'   hairstyle, but if false, then it may}
